@@ -8,7 +8,7 @@
 	"scope":"vbs",
 	"prefix":"AddObject",
 	"body":[
-		"AddObject(\"${1:ClassName}\", ${2:[Activate]})"
+		"AddObject(\"${1:ClassName}\", ${2:[Activate]}, \"${3:[ObjectName]}\")"
 	],
 	"description":"Este método adiciona um novo objeto à aplicação.Este método possui o parâmetro ClassName, que indica o tipo de objeto que é criado."
 },
