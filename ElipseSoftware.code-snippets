@@ -1,0 +1,2004 @@
+// '******************************************************************************'
+// ' Author    : Afonso Calado - afonso_calado@hotmail.com
+// ' Date      : 03/01/2024
+// '******************************************************************************'
+{
+//////////////////////////////////////// METODOS GERAIS 
+"E3-AddObject":{
+	"scope":"vbs",
+	"prefix":"AddObject",
+	"body":[
+		"AddObject(\"${1:ClassName}\", ${2:[Activate]})"
+	],
+	"description":"Este método adiciona um novo objeto à aplicação.Este método possui o parâmetro ClassName, que indica o tipo de objeto que é criado."
+},
+"E3-CreateObject":{
+	"scope":"vbs",
+	"prefix":"CreateObject",
+	"body":[
+		["CreateObject(\"${1|Scripting.Dictionary,Msxml2.DOMDocument.6.0,WScript.Shell|}\")"]
+	],
+	"description":"Cria e retorna uma referência a um objeto Automation."
+},
+"E3-Activate":{
+	"scope":"vbs",
+	"prefix":"Activate",
+	"body":[
+		"Activate()"
+	],
+	"description":"Ativa um objeto que está inativo no momento"
+},
+"E3-Context":{
+	"scope":"vbs",
+	"prefix":"Context",
+	"body":[
+		"Contex(\"${1:ContextName}\")"
+	],
+	"description":"Retorna o objeto que implementa o contexto indicado pelo parâmetro ContextName, que deve ser uma String entre aspas duplas."
+},
+"E3-Deactivate":{
+	"scope":"vbs",
+	"prefix":"Deactivate",
+	"body":[
+		"Deactivate()"
+	],
+	"description":"Este método desativa um objeto criado ou previamente ativado pelo método Activate. Pode-se desativar um objeto quando é necessário realizar uma configuração prévia."
+},
+"E3-DeleteObject":{
+	"scope":"vbs",
+	"prefix":"DeleteObject",
+	"body":[
+		"DeleteObject(\"${1:ChildName}\")"
+	],
+	"description":"Apaga do projeto o objeto especificado. O parâmetro ChildName é uma String (ignora maiúsculas e minúsculas) que indica o objeto filho que se deseja apagar."
+},
+"E3-GetChildObject":{
+	"scope":"vbs",
+	"prefix":"GetChildObject",
+	"body":[
+		"GetChildObject(\"${1:ObjectPath}\")"
+	],
+	"description":"Este método retorna uma referência para o objeto filho apontado pelo parâmetro ObjectPath."
+},
+"E3-GetObject":{
+	"scope":"vbs",
+	"prefix":"GetObject",
+	"body":[
+		"Application.GetObject(\"${1:ObjectPath}\")"
+	],
+	"description":"Este método retorna a referência do objeto especificado em ObjectPath."
+},
+"E3-Item":{
+	"scope":"vbs",
+	"prefix":"Item",
+	"body":[
+		"Item(\"${1:ItemId}\")"
+	],
+	"description":"Retorna a referência para o objeto filho ItemId do objeto que chamou este método. Este método pode buscar um objeto tanto pelo nome quanto pelo índice, um inteiro entre 1 (um) e o valor especificado na propriedade Count."
+},
+"E3-RunEvent":{
+	"scope":"vbs",
+	"prefix":"RunEvent",
+	"body":[
+		"RunEvent(\"${1:EventName}\", ${2:[Arguments]})"
+	],
+	"description":"Executa o script ou scripts associados ao evento indicado pelo parâmetro EventName, que deve ser uma String. O parâmetro Arguments é opcional e deve ser usado nos casos em que o evento necessite de argumentos. Estes argumentos devem estar separados por vírgulas."
+},
+"E3-RunProcedure":{
+	"scope":"vbs",
+	"prefix":"RunRunProcedureEvent",
+	"body":[
+		"RunProcedure(\"${1:ProcedureName}\",${2:[Arguments]})"
+	],
+	"description":"Executa o script ou scripts associados ao procedimento (procedure) ou função (function) indicado pelo parâmetro ProcedureName, que deve ser uma String. O parâmetro Arguments é opcional e deve ser usado nos casos em que o procedimento ou função necessitem de argumentos. Estes argumentos devem estar separados por vírgulas."
+},
+"E3-Save":{
+	"scope":"vbs",
+	"prefix":"Save",
+	"body":[
+		"Save()"
+	],
+	"description":"Este método salva o objeto especificado, que foi modificado em tempo de execução (runtime)."
+},
+//////////////////////////////////////// PROPRIEDADES GERAIS 
+"E3-Application":{
+	"scope":"vbs",
+	"prefix":"Application",
+	"body":[
+		"Application"
+	],
+	"description":"Esta propriedade retorna o objeto de aplicação relacionado ao contexto atual do objeto."
+},
+"E3-Count":{
+	"scope":"vbs",
+	"prefix":"Count",
+	"body":[
+		"Count"
+	],
+	"description":" Retorna o número de objetos filhos, ou itens, que um objeto possui."
+},
+"E3-DocString":{
+	"scope":"vbs",
+	"prefix":"DocString",
+	"body":[
+		"DocString"
+	],
+	"description":"Texto livre que tem por objetivo possibilitar a documentação das funcionalidades ou características do objeto pelos programadores do projeto."
+},
+"E3-IsObjectActive":{
+	"scope":"vbs",
+	"prefix":"IsObjectActive",
+	"body":[
+		"IsObjectActive"
+	],
+	"description":"Booleano Esta propriedade indica se um objeto está ativado. Em tempo de execução, todos os objetos definidos em um projeto retornam Verdadeiro nesta propriedade até que seja usado o método Deactivate no objeto ou em um de seus objetos pai."
+},
+"E3-Links":{
+	"scope":"vbs",
+	"prefix":"Links",
+	"body":[
+		"Links"
+	],
+	"description":"Retorna um objeto que é uma coleção das conexões (ou Associações) de um objeto qualquer do E3."
+},
+"E3-Name":{
+	"scope":"vbs",
+	"prefix":"Name",
+	"body":[
+		"Name"
+	],
+	"description":"Identifica um objeto na aplicação. Esta propriedade não pode ser alterada com o objeto ativo."
+},
+"E3-ObjectEvents":{
+	"scope":"vbs",
+	"prefix":"ObjectEvents",
+	"body":[
+		"ObjectEvents"
+	],
+	"description":"Retorna um objeto que é uma coleção de Eventos, tanto pré-definidos quanto de usuário, de um objeto qualquer do E3."
+},
+"E3-Parent":{
+	"scope":"vbs",
+	"prefix":"Parent",
+	"body":[
+		"Parent"
+	],
+	"description":"Retorna o objeto pai deste objeto. Sendo assim, se um objeto está inserido na Tela, esta propriedade retorna o valor ""Tela"". "
+},
+"E3-PathContainer":{
+	"scope":"vbs",
+	"prefix":"PathContainer",
+	"body":[
+		"PathContainer"
+	],
+	"description":"Retorna uma String contendo o caminho do objeto que contém o objeto atual, incluindo as Pastas."
+},
+"E3-PathName":{
+	"scope":"vbs",
+	"prefix":"PathName",
+	"body":[
+		"PathName"
+	],
+	"description":" Identifica o caminho de um objeto na aplicação. Esta propriedade é somente de leitura."
+},
+"E3-PathVolume":{
+	"scope":"vbs",
+	"prefix":"PathVolume",
+	"body":[
+		"PathVolume"
+	],
+	"description":"Retorna uma String contendo o nome do arquivo .prj ou .lib que contém o objeto."
+},
+"E3-CreateLink":{
+	"scope":"vbs",
+	"prefix":"CreateLink",
+	"body":[ 
+		["CreateLink(\"${1:Property}\", \"${2:Source}\", ${3|0,1,2,3,4,5,6|})"],
+		"$LINE_COMMENT 0 - Associação Simples",
+		"$LINE_COMMENT 1 - Associação Bidirecional",
+		"$LINE_COMMENT 2 - Associação Analógica",
+		"$LINE_COMMENT 3 - Associação Digital",
+		"$LINE_COMMENT 4 - Associação por Tabela",
+		"$LINE_COMMENT 5 - Associação Reversa",
+		"$LINE_COMMENT 6 - Associação Múltipla"
+	],
+	"description":"Retorna uma String contendo o nome do arquivo .prj ou .lib que contém o objeto."
+},
+"E3-RemoveLink":{
+	"scope":"vbs",
+	"prefix":"RemoveLink",
+	"body":[
+		"RemoveLink(\"${1:Property}\")"
+	],
+	"description":"Este método remove uma Associação com a propriedade especificada por Property, caso exista."
+},
+//////////////////////////////////////// METODOS ALARMES 
+"E3-Ack":{
+	"scope":"vbs",
+	"prefix":"Ack",
+	"body":[
+		"Ack(${1:[ActorID]})"
+	],
+	"description":"Executa o reconhecimento de um Alarme configurado no objeto Fonte de Alarmes."
+},
+"E3-GetAlarm":{
+	"scope":"vbs",
+	"prefix":"GetAlarm",
+	"body":[
+		"GetAlarm()"
+	],
+	"description":"Retorna um objeto que permite o acesso às configurações específicas de cada tipo de Alarme. "
+},
+"E3-Shelve":{
+	"scope":"vbs",
+	"prefix":"Shelve",
+	"body":[
+		"Shelve(\"${1:Duration}\", \"${2:Reason}\", \"${3:[ActorID]}\")"
+	],
+	"description":"Arquiva somente o Alarme da respectiva Fonte de Alarme. O parâmetro Duration indica o tempo que este Alarme deve permanecer arquivado.  "
+},
+"E3-Unshelve":{
+	"scope":"vbs",
+	"prefix":"Unshelve",
+	"body":[
+		"Unshelve(\"${1:[ActorID]}\")"
+	],
+	"description":"Desarquiva somente o Alarme da respectiva Fonte de Alarme. O parâmetro ActorID indica o usuário responsável pelo arquivamento."
+},"E3-AddSubCondition":{
+	"scope":"vbs",
+	"prefix":"AddSubCondition",
+	"body":[
+		"AddSubCondition(\"${1:[Name]}\", \"${2:[Caption]}\", \"${3:[Message]}\", ${4:[Kind]}, ${5:[AckRequired]}, ${6:[Severity]}, ${7:[Value]})",
+		" $LINE_COMMENT Name - O nome do objeto. Corresponde à propriedade Name do objeto Subcondição. Se omitido, a Subcondição é criada com o nome Subcondicao. Se o valor passado neste parâmetro já existe na coleção, é automaticamente incrementado. Consulte a propriedade geral Name para mais informações sobre os caracteres permitidos nos nomes de objetos",
+		" $LINE_COMMENT Caption - A descrição do objeto. Corresponde à propriedade Caption do objeto Subcondição. Se omitido, a descrição da Subcondição criada é uma String vazia",
+		" $LINE_COMMENT Message - O texto da mensagem da Subcondição. Corresponde à propriedade Message do objeto Subcondição. Se omitido, a mensagem da Subcondição criada é uma String vazia",
+		" $LINE_COMMENT Kind - O tipo de comportamento desta Subcondição. Os valores possíveis para este parâmetro são 0: Alarme, 1: Evento ou 2: Retorno. Corresponde à propriedade Kind do objeto Subcondição. Se omitido, o comportamento da Subcondição criada é 0 (zero, Alarme)",
+		" $LINE_COMMENT AckRequired - Indica se esta Subcondição exige reconhecimento. Corresponde à propriedade AckRequired do objeto Subcondição. Se omitido, a Subcondição criada exige reconhecimento",
+		" $LINE_COMMENT Severity - O tipo de severidade desta Subcondição. Os valores possíveis para este parâmetro são -2: Crítica, 0: Alta, 1: Média ou 2: Baixa. Corresponde à propriedade Severity do objeto Subcondição. Se omitido, a severidade da Subcondição criada é 1 (um, Média)",
+		" $LINE_COMMENT Value - Parâmetro que contém um valor que é avaliado para determinar se o alarme ocorre ou não. Corresponde à propriedade Value, comum às Fontes de Alarme. Se omitido, o valor da Subcondição criada é Null"
+	],
+	"description":"Adiciona um objeto Subcondição à coleção de Subcondições. "
+},"E3-RemoveSubCondition":{
+	"scope":"vbs",
+	"prefix":"RemoveSubCondition",
+	"body":[
+		"RemoveSubCondition(\"${1:Index}\")"
+	],
+	"description":"Remove o objeto Subcondição, indicado pelo parâmetro Index. Este parâmetro pode ser o índice na coleção, iniciando em 1 (um), ou o nome do objeto, definido na propriedade Name."
+},"E3-AckAllAlarms":{
+	"scope":"vbs",
+	"prefix":"AckAllAlarms",
+	"body":[
+		"AckAllAlarms(${1:[ActorID]})"
+	],
+	"description":"Executa o reconhecimento de todos os Alarmes do Servidor, independente da Área. "
+},
+"E3-AckArea":{
+	"scope":"vbs",
+	"prefix":"AckArea",
+	"body":[
+		"AckArea(\"${1:Area}\",${2:[ActorID]})"
+	],
+	"description":"Executa o reconhecimento dos Alarmes em uma determinada Área. "
+},
+//////////////////////////////////////// BANCO DE DADOS
+"E3-AccessSetDBPassword":{
+	"scope":"vbs",
+	"prefix":"AccessSetDBPassword",
+	"body":[
+		"AccessSetDBPassword(\"${1:DBPwd}\")"
+	],
+	"description":"Configura a senha de um banco de dados do tipo Access. O parâmetro DBPwd determina a senha a ser utilizada neste banco de dados."
+},
+"E3-SetDBParameters":{
+	"scope":"vbs",
+	"prefix":"SetDBParameters",
+	"body":[
+		"SetDBParameters(\"${1:ServerName}\", \"${2:UserName}\", \"${3:Password}\", \"${4:[DBName]}\", ${5:[Port]})"
+	],
+	"description":"String de conexão com um banco de dados nas propriedades do objeto Banco de Dados."
+},
+//////////////////////////////////////// METODOS DRIVERS
+"E3-Write":{
+	"scope":"vbs",
+	"prefix":"Write",
+	"body":[
+		"Write(${1:N1}, ${2:N2}, ${3:N3}, ${4:N4]}, ${5:Value}, ${6:[WriteSyncMode]})"
+	],
+	"description":"Executa a escrita de um dado em um equipamento. Este método retorna um Booleano que indica o sucesso ou não da operação. Os parâmetros N1 a N4 correspondem aos parâmetros N do Driver de Comunicação. O parâmetro Value define o valor a ser escrito no Driver de Comunicação. O parâmetro WriteSyncMode permite utilizar um modo de escrita diferente do utilizado pelo Driver de Comunicação."
+},
+"E3-WriteEx":{
+	"scope":"vbs",
+	"prefix":"WriteEx",
+	"body":[
+		"WriteEx(${1:N1}, ${2:N2}, ${3:N3}, ${4:N4}, ${5:Value}, ${6:[Timestamp]}, ${7:[Quality]}, ${8:[WriteStatus]}, ${9:[WriteSyncMode]})"
+	],
+	"description":"Executa a escrita de um dado em um equipamento. Este método retorna um Booleano que indica o sucesso ou não da operação. Os parâmetros N1 a N4 correspondem aos parâmetros N do Driver de Comunicação. O parâmetro Value define o valor a ser escrito no Driver de Comunicação. O parâmetro WriteSyncMode permite utilizar um modo de escrita diferente do utilizado pelo Driver de Comunicação."
+},
+//////////////////////////////////////// METODOS FORMULAS
+"E3-CreateUnit":{
+	"scope":"vbs",
+	"prefix":"CreateUnit",
+	"body":[
+		"CreateUnit(\"${1:UnitName}\")"
+	],
+	"description":"Cria uma Unidade na tabela de Fórmulas. Este método possui o parâmetro UnitName, que determina o nome da Unidade a ser criada."
+},
+"E3-CreateValue":{
+	"scope":"vbs",
+	"prefix":"CreateValue",
+	"body":[
+		"CreateValue(\"${1:ValueName}\")"
+	],
+	"description":"Cria um Conjunto de Valores na tabela de Fórmulas. Este método possui o parâmetro ValueName, que determina o nome do Conjunto de Valores a ser criado. "
+},
+"E3-DeleteUnit":{
+	"scope":"vbs",
+	"prefix":"DeleteUnit",
+	"body":[
+		"DeleteUnit(\"${1:UnitName}\")"
+	],
+	"description":"Apaga uma Unidade na tabela de Fórmulas. Este método possui o parâmetro UnitName, que informa o nome da Unidade a ser apagada."
+},
+"E3-DeleteValue":{
+	"scope":"vbs",
+	"prefix":"DeleteValue",
+	"body":[
+		"DeleteValue(\"${1:ValueName}\")"
+	],
+	"description":"Apaga um Conjunto de Valores na tabela de Fórmulas. Este método possui o parâmetro ValueName, que informa o nome do Conjunto de Valores a ser apagado."
+},
+"E3-FindUnit":{
+	"scope":"vbs",
+	"prefix":"FindUnit",
+	"body":[
+		"FindUnit(\"${1:UnitName}\")"
+	],
+	"description":"Verifica se uma determinada Unidade existe no banco de dados das Fórmulas. Este método possui o parâmetro UnitName, que determina o nome da Unidade a ser encontrada."
+},
+"E3-FindValue":{
+	"scope":"vbs",
+	"prefix":"FindValue",
+	"body":[
+		"FindValue(\"${1:ValueName}\")"
+	],
+	"description":"Verifica se um determinado Conjunto de Valores existe no banco de dados de Fórmulas. Este método possui o parâmetro ValueName, que informa o nome do Conjunto de Valores a ser encontrado."
+},
+"E3-GetUnitData":{
+	"scope":"vbs",
+	"prefix":"GetUnitData",
+	"body":[
+		"GetUnitData(\"${1:UnitName}\", \"${2:TemplateName}\", ${3:Val})"
+	],
+	"description":"Coloca na variável indicada em Val o Tag associado à Unidade UnitName do Template TemplateName. "
+},
+"E3-GetValueData":{
+	"scope":"vbs",
+	"prefix":"GetValueData",
+	"body":[
+		"GetValueData(\"${1:UnitName}\", \"${2:TemplateName}\", ${3:Val})"
+	],
+	"description":"Coloca na variável Val o valor do Conjunto de Valores ValueName que está associado ao Template TemplateName."
+},
+"E3-LoadFormulaValuesQuiet":{
+	"scope":"vbs",
+	"prefix":"LoadFormulaValuesQuiet",
+	"body":[
+		"LoadFormulaValuesQuiet(\"${1:UnitName}\", \"${2:ValueName}\")"
+	],
+	"description":"Carrega um Conjunto de Valores para uma Unidade de destino, sem apresentar nenhuma mensagem."
+},
+"E3-RenameUnit":{
+	"scope":"vbs",
+	"prefix":"RenameUnit",
+	"body":[
+		"RenameUnit(\"${1:UnitName}\", \"${2:NewUnitName}\")"
+	],
+	"description":"Renomeia uma determinada Unidade existente na tabela de Fórmulas."
+},
+"E3-RenameValue":{
+	"scope":"vbs",
+	"prefix":"RenameValue",
+	"body":[
+		"RenameValue(\"${1:UnitName}\", \"${2:NewValueName}\")"
+	],
+	"description":"Renomeia um determinado Conjunto de Valores existente na tabela de Fórmulas. "
+},
+"E3-SaveFormulaValues":{
+	"scope":"vbs",
+	"prefix":"SaveFormulaValues",
+	"body":[
+		"SaveFormulaValues(\"${1:UnitName}\", \"${2:NewValueName}\", ${3:[IgnoreErrors]})"
+	],
+	"description":"Salva os valores atuais dos Tags de uma Unidade de origem em um Conjunto de Valores na tabela de Fórmulas."
+},
+"E3-SetUnitData":{
+	"scope":"vbs",
+	"prefix":"SetUnitData",
+	"body":[
+		"SetUnitData(\"${1:UnitName}\", \"${2:TemplateName}\", ${3:Data})"
+	],
+	"description":"Carrega para a tabela de Fórmulas o Tag identificado para um certo Template, em uma determinada Unidade."
+},
+"E3-SetValueData":{
+	"scope":"vbs",
+	"prefix":"SetValueData",
+	"body":[
+		"SetValueData(\"${1:UnitName}\", \"${2:TemplateName}\", ${3:Data})"
+	],
+	"description":"Altera o valor referente a um Template definido para um determinado Conjunto de Valores."
+},
+//////////////////////////////////////// METODOS PARA O OBJETO HISTORICO
+"E3-StartAcquisition":{
+	"scope":"vbs",
+	"prefix":"StartAcquisition",
+	"body":[
+		"StartAcquisition()"
+	],
+	"description":"Habilita o Histórico a gravar os valores do seus campos periodicamente, a partir da taxa especificada na propriedade ScanTime."
+},"E3-StopAcquisition":{
+	"scope":"vbs",
+	"prefix":"StopAcquisition",
+	"body":[
+		"StopAcquisition()"
+	],
+	"description":"Desabilita a gravação dos registros por período no Histórico, independente do valor especificado na propriedade ScanTime."
+},"E3-WriteRecord":{
+	"scope":"vbs",
+	"prefix":"WriteRecord",
+	"body":[
+		"WriteRecord()"
+	],
+	"description":"Insere um novo registro no banco de dados. Os valores são obtidos a partir dos valores atuais de cada uma das variáveis especificadas como fontes de dados dos campos do Histórico."
+},"E3-AddField":{
+	"scope":"vbs",
+	"prefix":"AddField",
+	"body":[
+		"AddField(\"${1:[Name]}\", \"${2:[SourceLink]}\", ${3:[Type]}, ${4:[Type]})"
+	],
+	"description":"Este método adiciona um novo Campo de Histórico no objeto Fields e retorna o objeto criado. Em caso de erro, este método retorna Nothing."
+},"E3-DeleteField":{
+	"scope":"vbs",
+	"prefix":"DeleteField",
+	"body":[
+		"DeleteField(\"${1:Index}\")"
+	],
+	"description":"Remove o Campo de Histórico informado no parâmetro Index, que pode ser a posição do Campo de Histórico (iniciando em um) ou o valor da propriedade Name do Campo de Histórico, se este Campo de Histórico existir no objeto Fields."
+},
+//////////////////////////////////////// METODOS PARA O INFORMACOES DO SERVIDOR
+  "E3-Refresh":{
+	"scope":"vbs",
+	"prefix":"Refresh",
+	"body":[
+		"Refresh()"
+	],
+	"description":"Força a atualização do Domínio atual."
+},"E3-Stop":{
+	"scope":"vbs",
+	"prefix":"Stop",
+	"body":[
+		"Stop()"
+	],
+	"description":"Para o Domínio em execução."
+},
+//////////////////////////////////////// METODOS PARA OBJETOS EM TEMPO DE CONFIGURACAO
+ "E3-CreateFile":{
+	"scope":"vbs",
+	"prefix":"CreateFile",
+	"body":[
+		"CreateFile(\"${1:ProjectName}\", \"${2:ClassName}\", \"${3:[FileName]}\", \"${4:[FolderName]}\", ${5:[RunWizard]}, ${6:[OpenView]})"
+	],
+	"description":"Cria um novo objeto em um arquivo de projeto (.prj)."
+},"E3-CreateFolder":{
+	"scope":"vbs",
+	"prefix":"CreateFolder",
+	"body":[
+		"CreateFolder(\"${1:ProjectName}\", \"${2:FolderName}\", ${3:[ParentFolder]})"
+	],
+	"description":"Cria uma nova Pasta com o nome definido em FolderName, dentro do arquivo de projeto (.prj) ProjectName, e cujo objeto pai é indicado por ParentFolder."
+},"E3-CreatePRJ":{
+	"scope":"vbs",
+	"prefix":"CreatePRJ",
+	"body":[
+		"CreatePRJ(\"${1:Filename}\")"
+	],
+	"description":"Cria um novo arquivo de projeto (.prj) com o nome Filename, e o adiciona ao Domínio corrente, se existir."
+},"E3-DeleteFile":{
+	"scope":"vbs",
+	"prefix":"DeleteFile",
+	"body":[
+		"DeleteFile(\"${1:PRJName}\", \"${2:Filename}, \"${3:[Folder]}\")"
+	],
+	"description":"Apaga um objeto em um arquivo de projeto (.prj)."
+},"E3-ListFiles":{
+	"scope":"vbs",
+	"prefix":"ListFiles",
+	"body":[
+		"ListFiles(\"${1:[FileClass]}\", \"${2:[Domain]}\")"
+	],
+	"description":"Retorna uma coleção de objetos de uma determinada classe em um Domínio."
+},"E3-RenameFolder":{
+	"scope":"vbs",
+	"prefix":"RenameFolder",
+	"body":[
+		"RenameFolder(\"${1:OldName}\", \"${2:NewName}\")"
+	],
+	"description":"Permite renomear uma Pasta em um arquivo de projeto aberto no Elipse E3 Studio, pertencente ou não ao Domínio."
+},"E3-Trace":{
+	"scope":"vbs",
+	"prefix":"Trace",
+	"body":[
+		"Application.Trace(\"${1:MessageText}\", ${2:[LogTimeStamp]}, ${3:[BreakLine]})"
+	],
+	"description":"Este método permite registrar mensagens no log do Elipse E3. Este método pode ser usado, por exemplo, para registrar mensagens de depuração de scripts executados no Elipse E3 Studio."
+},"E3-Verify":{
+	"scope":"vbs",
+	"prefix":"Verify",
+	"body":[
+		"Verify(\"${1:OutputFile}\", \"${2:[ObjectLink]}\", ${3:[FixQuestionsDefault]})"
+	],
+	"description":"Executa uma verificação de erros no Domínio atual e exporta uma lista de erros encontrados durante esta verificação para um arquivo no formato CSV (Comma-Separated Values)."
+},
+//////////////////////////////////////// METODOS PARA OBJETOS EM TEMPO DE EXECUCAO
+"E3-ClearFailure":{
+	"scope":"vbs",
+	"prefix":"ClearFailure",
+	"body":[
+		"Application.ClearFailure(\"${1:FailureName}\")"
+	],
+	"description":"Executa uma verificação de erros no Domínio atual e exporta uma lista de erros encontrados durante esta verificação para um arquivo no formato CSV (Comma-Separated Values)."
+},"E3-E3GetActor":{
+	"scope":"vbs",
+	"prefix":"E3GetActor",
+	"body":[
+		"Application.E3GetActor()"
+	],
+	"description":"Este método retorna o nome de logon do usuário que iniciou a requisição atual no E3Run."
+},"E3-IsUserMemberOfGroup":{
+	"scope":"vbs",
+	"prefix":"IsUserMemberOfGroup",
+	"body":[
+		"Application.IsUserMemberOfGroup(\"${1:GroupName}\", \"${2:[UserName]}\")"
+	],
+	"description":"Este método verifica se um usuário pertence a um determinado grupo de usuários. "
+},"E3-LoadReport":{
+	"scope":"vbs",
+	"prefix":"LoadReport",
+	"body":[
+		"Application.LoadReport(\"${1:ReportName}\")"
+	]
+},"E3-ReportFailure":{
+	"scope":"vbs",
+	"prefix":"ReportFailure",
+	"body":[
+		"Application.ReportFailure(\"${1:FailureName}\", \"${2:FailureDescription}\", ${3:FailureWeight})"
+	],
+	"description":"Este método permite que uma aplicação reporte falhas para o Servidor, que podem ser visualizadas clicando com o botão direito do mouse no ícone do Elipse E3 na Área de Notificações do Windows."
+},"E3-TrackEvent":{
+	"scope":"vbs",
+	"prefix":"TrackEvent",
+	"body":[
+		"Application.TrackEvent(\"${1:EventMessage}\", ${2:[EventComment]}, ${3:[EventTimestamp]})"
+	],
+	"description":"Este método permite gerar eventos via script manualmente. Estes eventos podem ser gerados tanto no Elipse E3 Viewer quanto no Servidor, e são registrados em uma tabela no banco de dados da aplicação."
+},
+//////////////////////////////////////// METODOS PARA OBJETOS CONSULTA DO SERVIDOR
+"E3-AddField":{
+	"scope":"vbs",
+	"prefix":"AddField",
+	"body":[
+		"AddField(\"${1:Name}\", \"${2:[Table]}\")"
+	],
+	"description":"Este método adiciona um novo campo da tabela na Consulta."
+},"E3-AddStorageTag":{
+	"scope":"vbs",
+	"prefix":"AddStorageTag",
+	"body":[
+		"AddStorageTag(\"${1:Name}\", ${2:FieldType})"
+	],
+	"description":"Adiciona um Tag pertencente ao Storage à Consulta. O parâmetro Name recebe o nome do Tag a ser adicionado."
+},"E3-AddTable":{
+	"scope":"vbs",
+	"prefix":"AddTable",
+	"body":[
+		"AddTable(\"${1:Name}\")"
+	],
+	"description":"Adiciona uma tabela do banco de dados na Consulta. O parâmetro Table determina o nome da tabela a ser adicionada."
+},"E3-AddUaField":{
+	"scope":"vbs",
+	"prefix":"AddUaField",
+	"body":[
+		"AddUaField(\"${1:Name}\", \"${2:[Alias]}\", \"${3:[Aggregate]}\")"
+	],
+	"description":"Este método adiciona, em tempo de execução, um campo a uma consulta configurada para o tipo OPC UA."
+},"E3-Execute":{
+	"scope":"vbs",
+	"prefix":"Execute",
+	"body":[
+		"Execute(${1:[ImmediateExecute]})"
+	],
+	"description":"Este método executa um comando SQL que não tenha retorno, tais como DELETE, UPDATE ou INSERT, configurado na propriedade SQL da Consulta."
+},"E3-GetADORecordSet":{
+	"scope":"vbs",
+	"prefix":"GetADORecordSet",
+	"body":[
+		"GetADORecordSet()"
+	],
+	"description":"Este método retorna um Recordset do tipo ADO (ActiveX Data Object), resultante da execução da Consulta configurada."
+},"E3-GetAsyncADORecordSet":{
+	"scope":"vbs",
+	"prefix":"GetAsyncADORecordSet",
+	"body":[
+		"GetAsyncADORecordSet()"
+	],
+	"description":"Cria uma Consulta e, quando ela estiver finalizada, gera o evento OnAsyncQueryFinish do próprio objeto, passando para este evento o resultado (Recordset) gerado pela Consulta."
+},"E3-GetE3QueryFields":{
+	"scope":"vbs",
+	"prefix":"GetE3QueryFields",
+	"body":[
+		"GetE3QueryFields()"
+	],
+	"description":"Este método retorna a Coleção de Campos (colunas) de uma Consulta. Cada item desta Coleção possui propriedades que podem ser modificadas, conforme descrito no tópico Campo da Consulta."
+},"E3-RemoveField":{
+	"scope":"vbs",
+	"prefix":"RemoveField",
+	"body":[
+		"RemoveField(\"${1:FieldName}\", \"${2:[Table]}\")"
+	],
+	"description":"Este método remove um campo previamente incluído em uma Consulta."
+},"E3-RemoveStorageTag":{
+	"scope":"vbs",
+	"prefix":"RemoveStorageTag",
+	"body":[
+		"RemoveStorageTag(\"${1:Name}\")"
+	],
+	"description":"Remove um Tag previamente configurado na Consulta."
+},"E3-RemoveTable":{
+	"scope":"vbs",
+	"prefix":"RemoveTable",
+	"body":[
+		"RemoveTable(\"${1:TableName}\")"
+	],
+	"description":"Remove uma tabela da Consulta. O parâmetro TableName determina o nome da tabela a ser removida."
+},"E3-RemoveUaField":{
+	"scope":"vbs",
+	"prefix":"RemoveUaField",
+	"body":[
+		"RemoveUaField(\"${1:Name}\")"
+	],
+	"description":"Este método remove o campo com o nome especificado, se existir."
+},"E3-SetVariableValue":{
+	"scope":"vbs",
+	"prefix":"SetVariableValue",
+	"body":[
+		"SetVariableValue(\"${1:VarName}\", ${2:Value})"
+	],
+	"description":"Este método ajusta o valor de uma variável configurada na Consulta, de forma que este valor possa ser informado como um filtro ou parâmetro antes de a Consulta ser realizada."
+},"E3-Add":{
+	"scope":"vbs",
+	"prefix":"Add",
+	"body":[
+		"Add(\"${1:NewItem}\")"
+	],
+	"description":"Adiciona um novo objeto Campo da Consulta na Coleção de Campos de uma Consulta, indicado pelo parâmetro NewItem."
+},"E3-Remove":{
+	"scope":"vbs",
+	"prefix":"Remove",
+	"body":[
+		"Remove(\"${1:Index}\")"
+	],
+	"description":"Remove um objeto Campo da Consulta da Coleção de Campos de uma Consulta. "
+},
+//////////////////////////////////////// METODOS PARA OBJETOS FILTRO DE ALARMES
+"E3-GetEventByIndex":{
+	"scope":"vbs",
+	"prefix":"GetEventByIndex",
+	"body":[
+		"GetEventByIndex(\"${1:Index}\")"
+	],
+	"description":"Retorna um objeto Evento de uma Coleção de Eventos, especificado pelo parâmetro Index, que corresponde ao índice do objeto na Coleção. "
+},
+//////////////////////////////////////// METODOS PARA OBJETOS TAG DEMO
+"E3-Reset":{
+	"scope":"vbs",
+	"prefix":"Reset",
+	"body":[
+		"Reset()"
+	],
+	"description":"Zera a fase, ou deslocamento em tempo, da forma de onda do Tag. "
+},
+//////////////////////////////////////// METODOS PARA OBJETOS TAG INTERNA
+"E3-WriteEx":{
+	"scope":"vbs",
+	"prefix":"WriteEx",
+	"body":[
+		"WriteEx(${1:[NewValue]},\"${2:[NewTimestamp]}\",${3:[NewQuality]})"
+	],
+	"description":"Permite modificar o valor, a data e hora e a qualidade de um Tag Interno em uma única operação. Este método retorna um Booleano que indica o sucesso ou não da operação."
+},
+//////////////////////////////////////// METODOS PARA OBJETOS STORAGE
+"E3-CreateNewSession":{
+	"scope":"vbs",
+	"prefix":"CreateNewSession",
+	"body":[
+		"CreateNewSession(${1:[DefaultType]}, ${2:[DefaultMinRecTime]}, ${3:[DefaultMaxRecTime]}, ${4:[DefaultDeadBand]}, ${5:[DefaultDeadBandUnit]}, ${6:[DefaultScanTime]})"
+	],
+	"description":"Cria uma Sessão com a capacidade de incluir dados em um Storage, de forma independente da aquisição normal."
+},"E3-StartAcquisition":{
+	"scope":"vbs",
+	"prefix":"StartAcquisition",
+	"body":[
+		"StartAcquisition()"
+	],
+	"description":"Inicia ou retoma a geração de dados que vão para o Banco de Dados."
+},"E3-StopAcquisition":{
+	"scope":"vbs",
+	"prefix":"StopAcquisition",
+	"body":[
+		"StopAcquisition()"
+	],
+	"description":"Para a geração de dados que vão para o Banco de Dados. O Storage recebe notificações sobre quais Tags cadastrados sofreram modificação e, quando isto acontece, o Storage verifica se os registros são gravados ou não."
+},
+//////////////////////////////////////// METODOS PARA VIEWER
+"E3-CaptureScreen":{
+	"scope":"vbs",
+	"prefix":"CaptureScreen",
+	"body":[
+		"Application.CaptureScreen(\"${1:FileName}\")"
+	],
+	"description":"Este método captura a Tela atual e a salva em um arquivo. Este método é semelhante ao efeito realizado pela tecla PRINT SCREEN no Windows. O parâmetro FileName determina o nome do arquivo no qual a Tela é salva."
+},"E3-ChangePassword":{
+	"scope":"vbs",
+	"prefix":"ChangePassword",
+	"body":[
+		"Application.ChangePassword(${1:[PosX]}, ${2:[PosX]})"
+	],
+	"description":"Este método abre uma caixa de diálogo para permitir a troca de senha do usuário atual e retorna Verdadeiro se o usuário atual tem permissão para trocar a senha ou retorna Falso se houve falha na operação ou se não é possível trocar a senha porque o usuário não tem autorização."
+},"E3-ChangeUserPassword":{
+	"scope":"vbs",
+	"prefix":"ChangeUserPassword",
+	"body":[
+		"Application.ChangeUserPassword(\"${1:Username}\", \"${2:PasswordOld}\", \"${3:PasswordNew}\", ${4:[OpStatus]})"
+	],
+	"description":"Este método permite alterar a senha de um usuário sem mostrar nenhuma mensagem."
+},"E3-DoModal":{
+	"scope":"vbs",
+	"prefix":"DoModal",
+	"body":[
+		"Application.DoModal(\"${1:Screen}\", \"${2:Title}\", ${3:Left}, ${4:Top}, ${5:Width}, ${5:Height}, ${5:Arg}, ${6:[Flags]})",
+		" $LINE_COMMENT Os valores para ser utilizado no parâmetro Flags são:",
+		" $LINE_COMMENT 1-Habilita a barra de título na janela",
+		" $LINE_COMMENT 2-Habilita o botão Fechar na janela",
+		" $LINE_COMMENT 4-Habilita o botão Minimizar na janela",
+		" $LINE_COMMENT 8-Habilita o botão Maximizar na janela",
+		" $LINE_COMMENT 16-Habilita a borda na janela",
+		" $LINE_COMMENT 32-Especifica que a janela pode ser dimensionada",
+		" $LINE_COMMENT 64-Especifica que a janela pode ser movida",
+		" $LINE_COMMENT 256-Especifica que a janela permanece no topo da Tela",
+		" $LINE_COMMENT 512-Especifica que a janela é configurada no estilo Barra de Ferramentas",
+		" $LINE_COMMENT 1024-Desabilita os botões de objeto",
+		" $LINE_COMMENT 2048-Centraliza a Tela modal no Quadro, tanto horizontal quanto verticalmente"
+	],
+	"description":"Abre uma Tela modal, que é uma janela que não permite clicar em outras Telas ou janelas enquanto não é fechada. O parâmetro Title passado neste método só é utilizado se a propriedade Caption está vazia. Do contrário, este parâmetro é ignorado."
+},"E3-ESign":{
+	"scope":"vbs",
+	"prefix":"ESign",
+	"body":[
+		"Application.ESign(\"${1:ObjName}\", \"${2:[Description]}\", \"${3:[Action]}\", \"${4:[From]}\", \"${5:[To]}\", \"${6:[User]}\", \"${7:[Comment]}\")",
+		" $LINE_COMMENT Parâmetros do método ESing:",
+		" $LINE_COMMENT ObjName - Texto que contém o nome de um Tag ou outro objeto da aplicação",
+		" $LINE_COMMENT Description - Texto que contém a descrição de ObjName. Este parâmetro é opcional e, se omitido, a caixa de diálogo tenta buscar os dados da propriedade DocString de ObjName",
+		" $LINE_COMMENT Action - Texto que contém a ação a ser executada, como por exemplo Alteração do valor. Este parâmetro é opcional e, se omitido, insere uma String vazia no campo Ação",
+		" $LINE_COMMENT From - Variant que contém o valor original ou o estado a ser alterado. Este parâmetro é opcional e, se omitido, insere uma String vazia no campo De",
+		" $LINE_COMMENT To - Variant que contém o novo valor do Tag ou o valor a ser aplicado em Action. Este parâmetro é opcional e, se omitido, insere uma String vazia no campo Para",
+		" $LINE_COMMENT User - Texto de retorno. Recebe o nome de login selecionado na caixa de diálogo. Este parâmetro é opcional e, se omitido, insere uma String vazia no campo Usuário",
+		" $LINE_COMMENT Comment - Texto de retorno. Recebe o comentário digitado na caixa de diálogo. Este parâmetro é opcional e, se omitido, insere uma String vazia no campo Comentário"
+	],
+	"description":"Este método é utilizado para validar a alteração de um campo através de assinatura eletrônica."
+},"E3-ExecuteExternalApp":{
+	"scope":"vbs",
+	"prefix":"ExecuteExternalApp",
+	"body":[
+		"Application.ExecuteExternalApp(\"${1:AppPath}\", \"${2:Arguments}\", \"${3:InitialDir}\", ${4:CmdShow}, ${5:[ProcessId]})",
+		" $LINE_COMMENT Os valores para ser utilizado no parâmetro CmdShow são:",
+		" $LINE_COMMENT 0 - Esconde a janela e ativa outra janela",
+		" $LINE_COMMENT 1 - Ativa e mostra a janela. Se a janela estiver maximizada ou minimizada, ela é restaurada para o tamanho e posição originais. Uma aplicação deve especificar este valor quando estiver mostrando uma janela pela primeira vez",
+		" $LINE_COMMENT 2 - Ativa a janela e mostra-a minimizada",
+		" $LINE_COMMENT 3 - Ativa a janela e mostra-a maximizada",
+		" $LINE_COMMENT 4 - Mostra a janela com seu tamanho e posição mais recentes. A janela ativa permanece ativa",
+		" $LINE_COMMENT 5 - Ativa a janela e mostra-a com seu tamanho e posição atuais",
+		" $LINE_COMMENT 6 - Minimiza a janela e ativa a próxima janela de nível superior",
+		" $LINE_COMMENT 7 - Mostra a janela minimizada. A janela ativa permanece ativa",
+		" $LINE_COMMENT 8 - Mostra a janela em seu estado atual. A janela ativa permanece ativa",
+		" $LINE_COMMENT 9 - Ativa e mostra a janela. Se a janela estiver maximizada ou minimizada, ela é restaurada para o tamanho e posição originais. Uma aplicação deve especificar este valor quando estiver restaurando uma janela que estava minimizada"
+	],
+	"description":"Este método executa uma aplicação externa."
+},"E3-Exit":{
+	"scope":"vbs",
+	"prefix":"Exit",
+	"body":[
+		"Application.Exit()"
+	],
+	"description":"Este método fecha a janela do Elipse E3 Viewer."
+},"E3-GetFormulaUnitDataObj":{
+	"scope":"vbs",
+	"prefix":"GetFormulaUnitDataObj",
+	"body":[
+		"Application.GetFormulaUnitDataObj(\"${1:FormulaName}\")"
+	],
+	"description":"Este método obtém a configuração das Unidades existentes em uma determinada Fórmula. As Unidades são o destino dos dados salvos na Fórmula, ou valores. Este método possui o parâmetro FormulaName, que é o nome da Fórmula."
+},"E3-GetFormulaValueDataObj":{
+	"scope":"vbs",
+	"prefix":"GetFormulaValueDataObj",
+	"body":[
+		"Application.GetFormulaValueDataObj(\"${1:FormulaName}\")"
+	],
+	"description":"Este método obtém a configuração dos valores existentes em uma determinada Fórmula. Os valores são o conjunto de dados salvos na Fórmula. Este método possui o parâmetro FormulaName, que é o nome da Fórmula."
+},"E3-GetFrame":{
+	"scope":"vbs",
+	"prefix":"GetFrame",
+	"body":[
+		"Application.GetFrame(\"${1:[FrameName]}\", ${2:[CreateNew]})"
+	],
+	"description":"Este método procura por um objeto Divisor que já esteja aberto no Elipse E3 Viewer atual."
+},"E3-GetFullUserName":{
+	"scope":"vbs",
+	"prefix":"GetFullUserName",
+	"body":[
+		"Application.GetFullUserName()"
+	],
+	"description":"Este método retorna o nome completo do usuário logado no Elipse E3. Caso não haja nenhum usuário logado, retorna uma String vazia."
+},"E3-GetKeyPad":{
+	"scope":"vbs",
+	"prefix":"GetKeyPad",
+	"body":[
+		"Application.GetKeyPad()"
+	],
+	"description":"Retorna uma referência para o objeto Elipse KeyPad, permitindo manipular um teclado virtual flutuante em aplicações desenvolvidas com o Elipse E3."
+},"E3-GetMouseX":{
+	"scope":"vbs",
+	"prefix":"GetMouseX",
+	"body":[
+		"Application.GetMouseX()"
+	],
+	"description":"Retorna a coordenada X do ponteiro do mouse, em pixels, referente à área total da tela do computador."
+},"E3-GetMouseY":{
+	"scope":"vbs",
+	"prefix":"GetMouseY",
+	"body":[
+		"Application.GetMouseY()"
+	],
+	"description":"Retorna a coordenada Y do ponteiro do mouse, em pixels, referente à área total da tela do computador."
+},"E3-GetScreen":{
+	"scope":"vbs",
+	"prefix":"GetScreen",
+	"body":[
+		"Application.GetScreen()"
+	],
+	"description":"Este método retorna um objeto Tela, cujo nome deve ser especificado no parâmetro ScreenName. O valor de retorno deste método pode ser utilizado no método ShowScreen do objeto Divisor."
+},"E3-GetTrendAnalysis":{
+	"scope":"vbs",
+	"prefix":"GetTrendAnalysis",
+	"body":[
+		"Application.GetTrendAnalysis(\"${1:[Title]}\")"
+	],
+	"description":"Retorna um objeto que permite configurar a janela do TrendAnalysis. O parâmetro Title indica um título, opcional, para a janela do TrendAnalysis. "
+},"E3-GetValue":{
+	"scope":"vbs",
+	"prefix":"GetValue",
+	"body":[
+		"Application.GetValue(\"${1:TagName}\")"
+	],
+	"description":"Este método busca pelo valor de um objeto especificado no parâmetro TagName. "
+},"E3-IsAppRunning":{
+	"scope":"vbs",
+	"prefix":"IsAppRunning",
+	"body":[
+		"Application.IsAppRunning(${1:ProcessId})"
+	],
+	"description":"Indica se uma aplicação iniciada pelo método ExecuteExternalApp está em execução. Retorna Verdadeiro se a aplicação identificada no sistema operacional por ProcessId está em execução."
+},"E3-IsUserMemberOfGroup":{
+	"scope":"vbs",
+	"prefix":"IsUserMemberOfGroup",
+	"body":[
+		"Application.IsUserMemberOfGroup(\"${1:GroupName}\", \"${2:[UserName]}\")",
+		" $LINE_COMMENT • GroupName: Nome do grupo de usuários que se quer verificar",
+		" $LINE_COMMENT • UserName: Nome do usuário que se quer verificar. Se este parâmetro é omitido ou é igual a uma String vazia, o método considera o usuário atualmente logado no Elipse E3 Viewer"
+	],
+	"description":"Este método verifica se um usuário pertence a um determinado grupo."
+},"E3-IsWebViewer":{
+	"scope":"vbs",
+	"prefix":"IsWebViewer",
+	"body":[
+		"Application.IsWebViewer()"
+	],
+	"description":"Verifica se a aplicação está sendo visualizada pelo WebViewer. O método retorna Verdadeiro se a aplicação estiver sendo executada no WebViewer. Caso contrário, retorna Falso."
+},"E3-LoadFormulaDlg":{
+	"scope":"vbs",
+	"prefix":"LoadFormulaDlg",
+	"body":[
+		"Application.LoadFormulaDlg(${1:FormulaName}, ${2:[UnitName]}, ${3:[ValueName]})"
+	],
+	"description":"Este método abre uma caixa de diálogo que exibe as Unidades e os Conjuntos de Valores configurados em uma Fórmula (FormulaName), permitindo ao usuário selecionar o Conjunto de Valores e a Unidade em que este Conjunto é carregado."
+},"E3-LoadFormulaValues":{
+	"scope":"vbs",
+	"prefix":"LoadFormulaValues",
+	"body":[
+		"Application.LoadFormulaValues(\"${1:FormulaName}\", \"${2:UnitName}\", \"${3:ValueName}\")"
+	],
+	"description":"Este método carrega automaticamente um Conjunto de Valores para uma Unidade de destino, apresentando uma caixa de diálogo que permite ao usuário informar valores diferentes daqueles definidos na Fórmula."
+},"E3-LoadFormulaValuesQuiet":{
+	"scope":"vbs",
+	"prefix":"LoadFormulaValuesQuiet",
+	"body":[
+		"Application.LoadFormulaValuesQuiet(\"${1:FormulaName}\", \"${2:UnitName}\", \"${3:ValueName}\")"
+	],
+	"description":"Carrega um Conjunto de Valores para uma Unidade de destino, sem apresentar nenhuma mensagem."
+},"E3-LoadReport":{
+	"scope":"vbs",
+	"prefix":"LoadReport",
+	"body":[
+		"Application.LoadReport(\"${1:ReportName}\")"
+	],
+	"description":"Carrega um modelo de Relatório."
+},"E3-Login":{
+	"scope":"vbs",
+	"prefix":"Login",
+	"body":[
+		"Application.Login(${1:[Mode]}, ${2:[PosX]}, ${3:[PosY]}, ${4:[WindowsShowLastCredentials]})",
+		" $LINE_COMMENT •Mode: Um Booleano que determina se uma mensagem de confirmação ou falha da operação deve ser mostrada. Se este parâmetro é omitido, a mensagem de confirmação ou falha de operação não é mostrada. Quando uma Tela estiver para ser aberta, através do método OpenScreen, este método verifica se existe alguma configuração de segurança. Caso exista, a Tela só é aberta se o usuário logado tem permissão. Caso não tenha permissão, abre-se uma caixa de diálogo para o login",
+		" $LINE_COMMENT •PosX: Indica a posição, em pixels, da caixa de diálogo em relação à margem esquerda da janela. Caso este parâmetro seja omitido, a respectiva coordenada da caixa de diálogo é centralizada na janela",
+		" $LINE_COMMENT •PosY: Indica a posição, em pixels, da caixa de diálogo em relação à margem superior da janela. Caso este parâmetro seja omitido, a respectiva coordenada da caixa de diálogo é centralizada na janela",
+		" $LINE_COMMENT •WindowShowLastCredentials: Um Booleano que indica se, ao selecionar a autenticação pelo Windows, os campos de usuário e senha são completados com o usuário atualmente logado no Windows. Se este parâmetro é omitido, os campos de usuário e senha são completados"
+	],
+	"description":"Abre uma caixa de diálogo para o login, ou autenticação de usuário, na aplicação."
+},"E3-LoginUser":{
+	"scope":"vbs",
+	"prefix":"LoginUser",
+	"body":[
+		"Application.LoginUser(\"${1:Username}\", \"${2:UserPassword}\", ${3:[OpStatus]}, ${4:[WarnDaysToExpire]})"
+	],
+	"description":"Executa uma operação de login de um usuário específico sem mostrar nenhuma mensagem."
+},"E3-LoginWindowsUser":{
+	"scope":"vbs",
+	"prefix":"LoginWindowsUser",
+	"body":[
+		"Application.LoginWindowsUser(\"${1:[Username]}\", \"${2:[UserPassword]}\", ${3:[OpStatus]})"
+	],
+	"description":"Este método executa uma operação de login utilizando um usuário do Windows sem mostrar nenhuma mensagem."
+},"E3-Logout":{
+	"scope":"vbs",
+	"prefix":"Logout",
+	"body":[
+		"Application.Logout(${1:[Mode]})"
+	],
+	"description":"Executa o logout, ou saída do usuário atual da aplicação, do Elipse E3 x Power Viewer."
+},"E3-PasswordConfirm":{
+	"scope":"vbs",
+	"prefix":"PasswordConfirm",
+	"body":[
+		"Application.PasswordConfirm(${1:[Mode]}, ${2:[PosX]}, ${3:[PosY]})"
+	],
+	"description":"Este método abre uma caixa de diálogo solicitando a reconfirmação da senha do usuário atualmente logado. Retorna Verdadeiro se a senha é confirmada ou Falso caso contrário."
+},"E3-Playsound":{
+	"scope":"vbs",
+	"prefix":"Playsound",
+	"body":[
+		"Application.Playsound(\"${1:FileName}\")"
+	],
+	"description":"Executa um arquivo de som cujo caminho e nome estão indicados no parâmetro FileName."
+},"E3-SelectMenu":{
+	"scope":"vbs",
+	"prefix":"SelectMenu",
+	"body":[
+		"Application.SelectMenu(\"${1:Menu}\", ${2:Left}, ${3:Top})"
+	],
+	"description":"Este método mostra um menu contextual conforme especificado pelo parâmetro Menu. Este parâmetro é um texto que consiste em várias opções delimitadas por uma barra vertical (|), e cada uma destas Strings é uma opção do menu. Caso haja um conjunto de dois delimitadores sucessivos (||), um separador é inserido."
+},"E3-SetValue":{
+	"scope":"vbs",
+	"prefix":"SetValue",
+	"body":[
+		"Application.SetValue(\"${1:TagName}\", ${2:NewVal})"
+	],
+	"description":"Este método configura o valor de um objeto dentro do servidor."
+},"E3-ShowDatePicker":{
+	"scope":"vbs",
+	"prefix":"ShowDatePicker",
+	"body":[
+		"Application.ShowDatePicker(${1:DateValue}, ${2:Left}, ${3:Top}, ${4:[DefaultDate]})"
+	],
+	"description":"Abre uma caixa de diálogo para a alteração da data e da hora. Este método retorna Verdadeiro se o usuário confirma a data ou Falso se o usuário cancela a edição. "
+},"E3-ShowFilePicker":{
+	"scope":"vbs",
+	"prefix":"ShowFilePicker",
+	"body":[
+		"Application.ShowFilePicker(${1:Open}, \"${2:Filename}\", \"${3:[Extension]}\", ${4:[Flags]}, \"${5:[Filter]}\")",
+		" $LINE_COMMENT Os valores para ser utilizado no parâmetro CmdShow são:",
+		" $LINE_COMMENT 1 - CREATEPROMPT: Se o usuário especificar um arquivo que não existe, este flag permite que seja questionado sobre a criação do arquivo. Ao selecionar criar o arquivo, a caixa de diálogo é fechada e o nome do arquivo é retornado no parâmetro Filename. Caso contrário, a caixa de diálogo permanece aberta",
+		" $LINE_COMMENT 2 - FILEMUSTEXIST: Especifica que o usuário só pode digitar nomes de arquivos existentes. Caso contrário, a caixa de diálogo mostra um aviso na caixa de mensagens",
+		" $LINE_COMMENT 4 - NOCHANGEDIR: Recupera o diretório atual para o valor original, caso o usuário tenha mudado de diretório enquanto buscava o arquivo",
+		" $LINE_COMMENT 8 - NODEREFERENCELINKS: Configura a caixa de diálogo para retornar o arquivo de atalho (.lnk) selecionado. Se este flag não é especificado, a caixa de diálogo retorna o caminho e nome de arquivo referenciados pelo arquivo de atalho",
+		" $LINE_COMMENT 16 - NOREADONLYRETURN: Determina que o arquivo retornado não seja somente para leitura, e o diretório não é protegido contra gravação",
+		" $LINE_COMMENT 32 - PATHMUSTEXIST: Especifica que o usuário pode informar apenas arquivos e diretórios válidos, caso contrário uma caixa de mensagem é mostrada para avisar o usuário",
+		" $LINE_COMMENT 64 - READONLY: Permite que a opção Somente Leitura seja selecionada inicialmente quando a caixa de diálogo é criada",
+		" $LINE_COMMENT 128 - OVERWRITEPROMPT: Permite que a caixa de diálogo Salvar Como gere uma mensagem informando da existência do arquivo, e pede confirmação para sobrescrever este arquivo."
+
+	],
+	"description":"Exibe as caixas de diálogo Salvar e Abrir Arquivo do Windows. "
+},"E3-ShowPickColor":{
+	"scope":"vbs",
+	"prefix":"ShowPickColor",
+	"body":[
+		"Application.ShowPickColor(${1:ColorValue}, ${2:[Color]}, ${3:[Left]}, ${4:[Top]})"
+	],
+	"description":"Abre a caixa de diálogo Cores do Windows para selecionar uma cor."
+},"E3-ShowTrendAnalysis":{
+	"scope":"vbs",
+	"prefix":"ShowTrendAnalysis",
+	"body":[
+		"Application.ShowTrendAnalysis(\"${1:[Title]}\", ${2:[Left]}, ${3:[Top]}, \"${4:[Configuration]}\", ${5:[ConfigStatus]}, ${6:[ErrorDetails]})",
+		" $LINE_COMMENT Title - Determina o título da janela. Corresponde à propriedade Title do objeto TrendAnalysis. Se omitido ou informada uma String vazia, o título da janela é configurado para TrendAnalysis",
+		" $LINE_COMMENT Left - Coordenada horizontal da janela, em pixels. Consulte o método SetWindowPlacement do objeto TrendAnalysis para mais informações sobre o comportamento deste parâmetro, caso seja omitido",
+		" $LINE_COMMENT Top - Coordenada vertical da janela, em pixels. Consulte o método SetWindowPlacement do objeto TrendAnalysis para mais informações sobre o comportamento deste parâmetro, caso seja omitido",
+		" $LINE_COMMENT Configuration - Informa o conteúdo de uma configuração salva pelo método Save do objeto TrendAnalysis. Se omitido ou informada uma String vazia, não carrega nenhuma configuração previamente salva",
+		" $LINE_COMMENT ConfigStatus - Parâmetro opcional de retorno que informa o resultado do carregamento da janela do TrendAnalysis. Se este método retorna Verdadeiro, este parâmetro contém o valor 0 (zero), ou seja, a configuração foi carregada com sucesso. Se este método retorna Falso, este parâmetro pode conter os valores 1: A configuração não carregou corretamente, 2: O conteúdo da configuração é inválido ou 3: Esta configuração requer uma versão mais recente",
+		" $LINE_COMMENT ErrorDetails - Parâmetro opcional de retorno contendo uma String detalhando o erro no carregamento da janela do TrendAnalysis"
+	],
+	"description":"Mostra uma janela do TrendAnalysis. Este método retorna Verdadeiro se a janela foi mostrada corretamente ou Falso em caso de erro. "
+},"E3-Stopsound":{
+	"scope":"vbs",
+	"prefix":"Stopsound",
+	"body":[
+		"Application.Stopsound()"
+	],
+	"description":"Para um som que esteja executando."
+},"E3-ToggleValue":{
+	"scope":"vbs",
+	"prefix":"ToggleValue",
+	"body":[
+		"Application.ToggleValue(\"${1:TagName}\", ${2:ValA}, ${3:ValB})"
+	],
+	"description":"Este método busca o valor do objeto ou propriedade em execução no servidor e compara com os parâmetros ValA e ValB. "
+},"E3-UserAdministration":{
+	"scope":"vbs",
+	"prefix":"UserAdministration",
+	"body":[
+		"Application.UserAdministration(${1:[PosX]}, ${2:[PosY]}, ${3:[ShowMergeErrorsOnExit]}, ${4:[MergeDetails]})",
+		" $LINE_COMMENT •PosX: Parâmetro opcional que indica a posição, em pixels, da caixa de diálogo em relação à margem esquerda da janela",
+		" $LINE_COMMENT •PosY: Parâmetro opcional que indica a posição, em pixels, da caixa de diálogo em relação à margem superior da janela",
+		" $LINE_COMMENT •ShowMergeErrorsOnExit: Parâmetro Booleano opcional que indica se deve ser mostrada uma janela com os erros durante a execução deste método. Caso este parâmetro seja omitido, nenhuma janela é mostrada ao final da execução",
+		" $LINE_COMMENT •MergeDetails: Parâmetro opcional de saída contendo uma String com os erros acontecidos durante a execução deste método"
+
+	],
+	"description":"Este método abre uma caixa de diálogo que permite editar a lista de usuários do Servidor. "
+},
+//////////////////////////////////////// METODOS PARA QUADROS E DIVISORES
+"E3-BringToFront":{
+	"scope":"vbs",
+	"prefix":"BringToFront",
+	"body":[
+		"BringToFront()"
+	],
+	"description":"Traz para a frente um Divisor que esteja escondido ou abaixo de outro Divisor."
+},"E3-Close":{
+	"scope":"vbs",
+	"prefix":"Close",
+	"body":[
+		"Close(${1:Code})"
+	],
+	"description":"Utilize este método para fechar a janela do Quadro. O parâmetro Code tem o valor de retorno para o método DoModal."
+},"E3-FlashWindow":{
+	"scope":"vbs",
+	"prefix":"FlashWindow",
+	"body":[
+		"FlashWindow(${1:Number}, ${2:Time})"
+	],
+	"description":"Este método permite que o ícone do Elipse E3 Viewer comece a piscar na Área de Notificações do Windows. "
+},"E3-MaximizeFrame":{
+	"scope":"vbs",
+	"prefix":"MaximizeFrame",
+	"body":[
+		"MaximizeFrame()"
+	],
+	"description":"Maximiza um Quadro ou Tela modal."
+},"E3-MinimizeFrame":{
+	"scope":"vbs",
+	"prefix":"MinimizeFrame",
+	"body":[
+		"MinimizeFrame()"
+	],
+	"description":"Minimiza um Quadro ou Tela modal."
+},"E3-MoveFrame":{
+	"scope":"vbs",
+	"prefix":"MoveFrame",
+	"body":[
+		"MoveFrame(${1:[PosX]}, ${2:[PosY]}, ${3:[SizeX]}, ${4:[SizeY]})"
+	],
+	"description":"Move e redimensiona um Divisor (Frame) para uma coordenada e um tamanho específicos. "
+},"E3-NavigateBack":{
+	"scope":"vbs",
+	"prefix":"NavigateBack",
+	"body":[
+		"NavigateBack()"
+	],
+	"description":"Volta para a Tela anterior no histórico de navegação do Divisor, se a propriedade NavigateCanGoBack é Verdadeira."
+},"E3-NavigateForward":{
+	"scope":"vbs",
+	"prefix":"NavigateForward",
+	"body":[
+		"NavigateForward()"
+	],
+	"description":"Avança para a Tela seguinte no histórico de navegação do Divisor, se a propriedade NavigateCanGoForward é Verdadeira."
+},"E3-NavigateHistReset":{
+	"scope":"vbs",
+	"prefix":"NavigateHistReset",
+	"body":[
+		"NavigateHistReset()"
+	],
+	"description":"Limpa o histórico de abertura de Telas do Divisor, indicado pela propriedade NavigateHistCount."
+},"E3-OpenScreen":{
+	"scope":"vbs",
+	"prefix":"OpenScreen",
+	"body":[
+		"OpenScreen(${1:ScreenName}, ${2:Arg})"
+	],
+	"description":"Este método abre uma Tela dentro de um Divisor."
+},"E3-Refresh":{
+	"scope":"vbs",
+	"prefix":"Refresh",
+	"body":[
+		"Refresh(${1:[Force]})"
+	],
+	"description":"Este método permite forçar o redesenho do conteúdo de uma Tela ou Divisor."
+},"E3-RestoreFrame":{
+	"scope":"vbs",
+	"prefix":"RestoreFrame",
+	"body":[
+		"RestoreFrame()"
+	],
+	"description":"Permite restaurar a janela do Quadro para o tamanho original."
+},"E3-SetDisableTaskSwitching":{
+	"scope":"vbs",
+	"prefix":"SetDisableTaskSwitching",
+	"body":[
+		"SetDisableTaskSwitching(${1:Disable})"
+	],
+	"description":"Habilita ou desabilita a troca de janelas. O parâmetro Disable é um valor Booleano que indica se a troca de janelas é habilitada ou não."
+},"E3-SetForegroundWnd":{
+	"scope":"vbs",
+	"prefix":"SetForegroundWnd",
+	"body":[
+		"SetForegroundWnd()"
+	],
+	"description":"Este método ativa e move o foco para a janela do Elipse E3 Viewer, e é útil quando se deseja chamar a atenção do operador para algum evento ocorrido, quando a janela do Elipse E3 Viewer encontra-se escondida ou minimizada."
+},"E3-SetFrameOptions":{
+	"scope":"vbs",
+	"prefix":"SetFrameOptions",
+	"body":[
+		"SetFrameOptions(\"${1:Title}\", ${2:[Flags]})",
+		" $LINE_COMMENT Os valores para ser utilizado no parâmetro Flags são:"
+		" $LINE_COMMENT 1 - Habilita a barra de título na janela",
+		" $LINE_COMMENT 2 - Habilita o botão Fechar na janela",
+		" $LINE_COMMENT 4 - Habilita o botão Minimizar na janela",
+		" $LINE_COMMENT 8 - Habilita o botão Maximizar na janela",
+		" $LINE_COMMENT 16 - Habilita a borda na janela",
+		" $LINE_COMMENT 32 - Especifica que a janela pode ser dimensionada. Para isto, é necessário que a janela tenha uma borda",
+		" $LINE_COMMENT 64 - Especifica que a janela pode ser movida",
+		" $LINE_COMMENT 256 - Especifica que a janela fica no topo da Tela",
+		" $LINE_COMMENT 512 - Especifica que a janela é configurada no estilo Barra de Ferramentas",
+		" $LINE_COMMENT 1024 - Desabilita os botões de objeto",
+		" $LINE_COMMENT 2048 - Centraliza a janela"
+	],
+	"description":"Este método é utilizado para configurar o título do Quadro na janela e o estilo da janela. O parâmetro Title é uma String que contém o título da janela. Este texto é mostrado se a propriedade Caption da Tela está vazia."
+},"E3-ShowScreen":{
+	"scope":"vbs",
+	"prefix":"ShowScreen",
+	"body":[
+		"ShowScreen(${1:Screen}, ${2:[Zoom]}, ${3:[Scrollbars]}, ${4:[Alignment]})",
+		" $LINE_COMMENT •Screen: O objeto Tela a ser carregado. Este objeto deve ser retornado pelo método GetScreen do Viewer",
+		" $LINE_COMMENT •Zoom: Percentual de zoom da Tela. Se omitido, assume o valor 100",
+		" $LINE_COMMENT •Scrollbars: Booleano que indica se a barra de rolagem da Tela deve ou não estar habilitada. Se omitido, não habilita a barra de rolagem da Tela",
+		" $LINE_COMMENT •Arg: String cujo valor é usado no evento OnPreShow da Tela a ser carregada. Se omitido, não passa nenhum valor para a Tela a ser carregada",
+		" $LINE_COMMENT •Alignment: Indica se a Tela deve ter um alinhamento superior esquerdo (1, um) ou um alinhamento centralizado (2, dois) em relação à área visível. Se este parâmetro é omitido ou se o valor informado é inválido, assume o valor 0 (zero, comportamento padrão da Tela)"
+
+	],
+	"description":"Este método carrega uma Tela no Divisor, fechando a Tela ou Quadro carregado anteriormente."
+},
+//////////////////////////////////////// METODOS PARA TELAS E OBJETOS DE TELAS
+"E3-FromPixelX":{
+	"scope":"vbs",
+	"prefix":"FromPixelX",
+	"body":[
+		"FromPixelX(${1:XPixel})"
+	],
+	"description":"Converte a coordenada X da Tela, indicada pelo parâmetro XPixel, de pixels para Himetric. Este método é complementar ao método ToPixelX."
+},"E3-FromPixelY":{
+	"scope":"vbs",
+	"prefix":"FromPixelY",
+	"body":[
+		"FromPixelY(${1:YPixel})"
+	],
+	"description":"Converte a coordenada Y da Tela, indicada pelo parâmetro YPixel, de pixels para Himetric. Este método é complementar ao método ToPixelY."
+},"E3-ToPixelX":{
+	"scope":"vbs",
+	"prefix":"ToPixelX",
+	"body":[
+		"ToPixelX(${1:XHimetric})"
+	],
+	"description":"Converte a coordenada X da Tela, indicada pelo parâmetro XHimetric, de Himetric para pixels. Este método é complementar ao método FromPixelX."
+},"E3-ToPixelY":{
+	"scope":"vbs",
+	"prefix":"ToPixelY",
+	"body":[
+		"ToPixelY(${1:YHimetric})"
+	],
+	"description":"Converte a coordenada Y da Tela, indicada pelo parâmetro YHimetric, de Himetric para pixels. Este método é complementar ao método FromPixelY."
+},"E3-FitObject":{
+	"scope":"vbs",
+	"prefix":"FitObject",
+	"body":[
+		"FitObject(${1:[ScreenFillPercentage]})"
+	],
+	"description":"Este método enquadra um objeto no centro da Tela usando uma porcentagem relativa à Tela para preenchimento."
+},"E3-SendToBack":{
+	"scope":"vbs",
+	"prefix":"SendToBack",
+	"body":[
+		"SendToBack()"
+	],
+	"description":"Posiciona um objeto atrás de todos os outros objetos da Tela."
+},"E3-SetFocus":{
+	"scope":"vbs",
+	"prefix":"SetFocus",
+	"body":[
+		"SetFocus()"
+	],
+	"description":"Move o foco do ponteiro do mouse ou do teclado para um objeto determinado."
+},"E3-DeletePoint":{
+	"scope":"vbs",
+	"prefix":"DeletePoint",
+	"body":[
+		"DeletePoint(${1:NameIndex})"
+	],
+	"description":"Remove o Ponto de Conexão indicado pelo parâmetro NameIndex, que pode ser tanto o índice quanto o nome deste Ponto de Conexão na Coleção de Pontos de Conexão."
+},"E3-ConnectTo":{
+	"scope":"vbs",
+	"prefix":"ConnectTo",
+	"body":[
+		"ConnectTo(${1:Object}, ${2:SlotNameIndex})"
+	],
+	"description":"Conecta este Ponto de Conexão a um outro objeto de Tela, indicado no parâmetro Object, e desfaz a conexão existente, se necessário."
+},"E3-Delete":{
+	"scope":"vbs",
+	"prefix":"Delete",
+	"body":[
+		"Delete()"
+	],
+	"description":"Remove este Ponto de Conexão. Após utilizar este método, qualquer tentativa de acessar este objeto retorna um erro."
+},"E3-Disconnect":{
+	"scope":"vbs",
+	"prefix":"Disconnect",
+	"body":[
+		"Disconnect(${1:X}, ${2:Y})"
+	],
+	"description":"Desconecta este Ponto de Conexão e retorna Verdadeiro se estava conectado ou Falso se não estava conectado. Os parâmetros X e Y são opcionais e indicam as coordenadas horizontais e verticais deste Ponto de Conexão."
+},"E3-Hide":{
+	"scope":"vbs",
+	"prefix":"Hide",
+	"body":[
+		"Hide()"
+	],
+	"description":"Oculta o Elipse KeyPad. Este método não tem efeito se o KeyPad já está invisível."
+},"E3-Show":{
+	"scope":"vbs",
+	"prefix":"Show",
+	"body":[
+		"Show()"
+	],
+	"description":"Mostra o Elipse KeyPad. Este método não tem efeito se o KeyPad já está visível na tela."
+},"E3-ScaleImage":{
+	"scope":"vbs",
+	"prefix":"ScaleImage",
+	"body":[
+		"ScaleImage(${1:PercX}, ${2:PercY}, ${3:AnchorType})"
+	],
+	"description":"Este método permite ajustar o tamanho de uma Figura proporcionalmente ao tamanho original. "
+},"E3-Copy":{
+	"scope":"vbs",
+	"prefix":"Copy",
+	"body":[
+		"Copy()"
+	],
+	"description":"Copia para a Área de Transferência um texto previamente selecionado. Utilize o método Paste para colar o texto em outro local."
+},"E3-Cut":{
+	"scope":"vbs",
+	"prefix":"Cut",
+	"body":[
+		"Cut()"
+	],
+	"description":"Recorta para a Área de Transferência um texto previamente selecionado. Utilize o método Paste para colar o texto em outro local."
+},"E3-Paste":{
+	"scope":"vbs",
+	"prefix":"Paste",
+	"body":[
+		"Paste()"
+	],
+	"description":"Insere em um objeto de texto o conteúdo da Área de Transferência."
+},"E3-AddItem":{
+	"scope":"vbs",
+	"prefix":"AddItem",
+	"body":[
+		"AddItem(\"${1:[pvargItem]}\", \"${2:[pvargIndex]}\")"
+	],
+	"description":"Este método é utilizado para adicionar itens a uma Lista. "
+},"E3-Clear":{
+	"scope":"vbs",
+	"prefix":"Clear",
+	"body":[
+		"Clear()"
+	],
+	"description":"Limpa o texto do objeto."
+},"E3-RemoveItem":{
+	"scope":"vbs",
+	"prefix":"RemoveItem",
+	"body":[
+		"RemoveItem(\"${1:[pvargIndex]}\")"
+	],
+	"description":"Este método é utilizado para adicionar itens a uma Lista. "
+},"E3-DropDown":{
+	"scope":"vbs",
+	"prefix":"DropDown",
+	"body":[
+		"DropDown()"
+	],
+	"description":"LEste método abre a lista de itens de uma Lista de Seleção. A chamada deste método tem o mesmo efeito que clicar, em tempo de execução, no botão com a seta ao lado direito do objeto."
+},
+//////////////////////////////////////// METODOS PARA E3ALARM
+"E3-AboutBox":{
+	"scope":"vbs",
+	"prefix":"AboutBox",
+	"body":[
+		"AboutBox()"
+	],
+	"description":"Este método exibe uma caixa de diálogo com informações sobre versão e copyright do objeto E3Alarm."
+},"E3-AckAll":{
+	"scope":"vbs",
+	"prefix":"AckAll",
+	"body":[
+		"AckAll(\"${1:[Operator]}\")"
+	],
+	"description":"Permite reconhecer globalmente todos os Alarmes. O parâmetro Operator é uma String opcional que indica o nome do operador que reconheceu o Alarme."
+},"E3-AckCurrentFilter":{
+	"scope":"vbs",
+	"prefix":"AckCurrentFilter",
+	"body":[
+		"AckCurrentFilter(\"${1:[Operator]}\")"
+	],
+	"description":"Permite reconhecer todos os Alarmes do filtro corrente. O parâmetro Operator é uma String opcional que indica o nome do operador que reconheceu o Alarme."
+},"E3-AckSelected":{
+	"scope":"vbs",
+	"prefix":"AckSelected",
+	"body":[
+		"AckSelected(\"${1:[Operator]}\")"
+	],
+	"description":"Permite reconhecer os Alarmes selecionados. Se não há Alarme selecionado no E3Alarm, este método falha."
+},"E3-DeleteUnboundAll":{
+	"scope":"vbs",
+	"prefix":"DeleteUnboundAll",
+	"body":[
+		"DeleteUnboundAll(\"${1:[Operator]}\")"
+	],
+	"description":"Permite remover globalmente todos os Alarmes não vinculados. O parâmetro Operator é uma String opcional que indica o nome do operador que removeu o Alarme. "
+},"E3-DeleteUnboundCurrentFilter":{
+	"scope":"vbs",
+	"prefix":"DeleteUnboundCurrentFilter",
+	"body":[
+		"DeleteUnboundCurrentFilter(\"${1:[Operator]}\")"
+	],
+	"description":"Permite remover todos os Alarmes não vinculados do filtro corrente. O parâmetro Operator é uma String opcional que indica o nome do operador que removeu o Alarme. "
+},"E3-DeleteUnboundSelected":{
+	"scope":"vbs",
+	"prefix":"DeleteUnboundSelected",
+	"body":[
+		"DeleteUnboundSelected(\"${1:[Operator]}\")"
+	],
+	"description":"Permite remover os Alarmes não vinculados selecionados. Se não há Alarme não vinculado selecionado no E3Alarm, este método falha."
+},"E3-GetFocusedEvent":{
+	"scope":"vbs",
+	"prefix":"GetFocusedEvent",
+	"body":[
+		"GetFocusedEvent()"
+	],
+	"description":"Este método retorna um objeto com as propriedades do Evento selecionado, ou seja, aquele que tem o foco atual, no E3Alarm, caso haja algum Evento selecionado. Se nenhum Evento está selecionado, este método retorna um objeto Nothing."
+},"E3-ShelveAll":{
+	"scope":"vbs",
+	"prefix":"ShelveAll",
+	"body":[
+		"ShelveAll(${1:Duration}, \"${2:Reason}\", \"${3:[Operator]}\")"
+	],
+	"description":"Permite arquivar globalmente todos os Alarmes. O parâmetro Duration indica o período de tempo, em minutos, que os Alarmes permanecem arquivados. "
+},"E3-ShelveCurrentFilter":{
+	"scope":"vbs",
+	"prefix":"ShelveCurrentFilter",
+	"body":[
+		"ShelveCurrentFilter(${1:Duration}, \"${2:Reason}\", \"${3:[Operator]}\")"
+	],
+	"description":"Permite arquivar todos os Alarmes do filtro corrente. O parâmetro Duration indica o período de tempo, em minutos, que os Alarmes permanecem arquivados. "
+},"E3-ShelveSelected":{
+	"scope":"vbs",
+	"prefix":"ShelveSelected",
+	"body":[
+		"ShelveSelected(${1:Duration}, \"${2:Reason}\", \"${3:[Operator]}\")"
+	],
+	"description":"Permite arquivar os Alarmes selecionados. Se não há Alarme selecionado no E3Alarm, este método falha."
+},"E3-UnshelveAll":{
+	"scope":"vbs",
+	"prefix":"UnshelveAll",
+	"body":[
+		"UnshelveAll(\"${1:Reason}\", \"${2:[Operator]}\")"
+	],
+	"description":"Permite desarquivar globalmente todos os Alarmes arquivados. O parâmetro Reason indica o motivo para o desarquivamento. "
+},"E3-UnshelveCurrentFilter":{
+	"scope":"vbs",
+	"prefix":"UnshelveCurrentFilter",
+	"body":[
+		"UnshelveCurrentFilter(\"${1:Reason}\", \"${2:[Operator]}\")"
+	],
+	"description":"Permite desarquivar todos os Alarmes do filtro corrente. O parâmetro Reason indica o motivo para o desarquivamento."
+},"E3-UnshelveSelected":{
+	"scope":"vbs",
+	"prefix":"UnshelveSelected",
+	"body":[
+		"UnshelveSelected(\"${1:Reason}\", \"${2:[Operator]}\")"
+	],
+	"description":"Permite desarquivar os Alarmes selecionados. Se não há Alarmes selecionados no E3Alarm, este método falha."
+},"E3-MoveAlarmField":{
+	"scope":"vbs",
+	"prefix":"MoveAlarmField",
+	"body":[
+		"MoveAlarmField(\"${1:Index}\", ${2:NewPosition})"
+	],
+	"description":"Muda a ordem de um Campo de Alarme na Coleção de Campos em tempo de execução."
+},"E3-SetConfig":{
+	"scope":"vbs",
+	"prefix":"SetConfig",
+	"body":[
+		"SetConfig(${1:[BackgroundColor]}, ${2:[TextColor]}, ${3:[BlinkMode]}, ${4:[TextColor2]})"
+	],
+	"description":"Configura a cor de fundo, de texto, o modo de pisca e a cor do texto quando o modo de pisca é igual a 3 (três) para o Alarme ou severidade. "
+},"E3-ClearFields":{
+	"scope":"vbs",
+	"prefix":"ClearFields",
+	"body":[
+		"ClearFields()"
+	],
+	"description":"Limpa a formatação de colunas e linhas do E3Browser."
+},"E3-GetColumnValue":{
+	"scope":"vbs",
+	"prefix":"GetColumnValue",
+	"body":[
+		"GetColumnValue(\"${1:Index}\")"
+	],
+	"description":"Retorna o valor de uma célula, na coluna informada e na linha selecionada. Este método possui o parâmetro Index, que determina o índice da coluna desejada."
+},"E3-Requery":{
+	"scope":"vbs",
+	"prefix":"Requery",
+	"body":[
+		"Requery()"
+	],
+	"description":"Este método atualiza a Consulta, utilizando a configuração atual, e retorna os dados para o E3Browser."
+},"E3-RetrieveE3QueryFields":{
+	"scope":"vbs",
+	"prefix":"RetrieveE3QueryFields",
+	"body":[
+		"RetrieveE3QueryFields()"
+	],
+	"description":"Este método lê a estrutura de dados da Consulta e atualiza a formatação do E3Browser, com os campos definidos na Consulta. "
+},
+//////////////////////////////////////// METODOS PARA E3CHART
+"E3-ClearPenMarks":{
+	"scope":"vbs",
+	"prefix":"ClearPenMarks",
+	"body":[
+		"ClearPenMarks()"
+	],
+	"description":"Remove as marcas de pesquisa de todas as Penas do E3Chart."
+},"E3-CopyConfig":{
+	"scope":"vbs",
+	"prefix":"CopyConfig",
+	"body":[
+		"CopyConfig(${1:SourceChart}, ${2:[Flags]})"
+	],
+	"description":"Este método copia as configurações de um E3Chart para outro. O parâmetro SourceChart indica o E3Chart de origem, cujas propriedades são copiadas para o E3Chart que chamou o método."
+},"E3-FitAll":{
+	"scope":"vbs",
+	"prefix":"FitAll",
+	"body":[
+		"FitAll(${1:[FitStyle]})"
+	],
+	"description":"Enquadra todas as Penas no E3Chart. O parâmetro opcional FitStyle indica o modo de enquadramento das Penas em tempo de execução e, se omitido, assume o valor 0 (zero). Os valores possíveis são 0: Enquadra ambos os Eixos ao mesmo tempo, 1: Enquadra apenas o Eixo Vertical ou 2: Enquadra apenas o Eixo Horizontal."
+},"E3-FitPen":{
+	"scope":"vbs",
+	"prefix":"FitPen",
+	"body":[
+		"FitPen(\"${1:Pen}\", ${2:[FitStyle]})"
+	],
+	"description":"Enquadra uma Pena no E3Chart. O parâmetro Pen define a Pena a ser enquadrada no E3Chart (índice ou nome da Pena). "
+},"E3-LoadData":{
+	"scope":"vbs",
+	"prefix":"LoadData",
+	"body":[
+		"LoadData()"
+	],
+	"description":"Carrega os dados no E3Chart. Este método é especialmente usado para carregar os dados antes de imprimir, quando usado em um objeto Relatório."
+},"E3-ResetConfig":{
+	"scope":"vbs",
+	"prefix":"ResetConfig",
+	"body":[
+		"ResetConfig(${1:[FitStyle]})"
+	],
+	"description":"Remove todas as configurações ajustadas em um E3Chart, devolvendo-o ao estado inicial."
+},"E3-ShowCursors":{
+	"scope":"vbs",
+	"prefix":"ShowCursors",
+	"body":[
+		"ShowCursors()"
+	],
+	"description":"Ativa o modo Pesquisa de Intervalo. Em tempo de execução, este recurso pode ser acessado clicando com o botão direito do mouse no E3Chart e selecionando a opção Pesquisar Intervalos do menu contextual."
+},"E3-ZoomIn":{
+	"scope":"vbs",
+	"prefix":"ZoomIn",
+	"body":[
+		"ZoomIn()"
+	],
+	"description":"Este método aumenta o zoom no E3Chart, isto é, aproxima a visualização das Penas. Em tempo de execução, este recurso pode ser acessado clicando com o botão direito do mouse no E3Chart e selecionando a opção Mais Zoom do menu contextual."
+},"E3-ZoomOut":{
+	"scope":"vbs",
+	"prefix":"ZoomOut",
+	"body":[
+		"ZoomOut()"
+	],
+	"description":"Este método diminui o zoom no E3Chart, isto é, afasta a visualização das Penas no E3Chart. Em tempo de execução, este recurso pode ser acessado clicando com o botão direito do mouse no E3Chart e selecionando a opção Menos Zoom do menu contextual."
+},"E3-AddQuery":{
+	"scope":"vbs",
+	"prefix":"AddQuery",
+	"body":[
+		"AddQuery(\"${1:QueryName}\")"
+	],
+	"description":"Adiciona uma Consulta na Coleção de Consultas do E3Chart. "
+},"E3-UpdateData":{
+	"scope":"vbs",
+	"prefix":"UpdateData",
+	"body":[
+		"UpdateData()"
+	],
+	"description":"Atualiza os dados de todas as Consultas. O script a seguir contém um exemplo de uso deste método."
+},"E3-AddAxis":{
+	"scope":"vbs",
+	"prefix":"AddAxis",
+	"body":[
+		"AddAxis(\"${1:AxisName}\")"
+	],
+	"description":"Adiciona um novo Eixo com o nome determinado no parâmetro AxisName e retorna o Eixo criado."
+},"E3-GetHistoricPeriod":{
+	"scope":"vbs",
+	"prefix":"GetHistoricPeriod",
+	"body":[
+		"GetHistoricPeriod(${1:Begin}, ${2:End})"
+	],
+	"description":"Retorna o intervalo de tempo mostrado na escala histórica. O parâmetro Begin indica a data inicial da escala histórica e End indica a data final."
+},"E3-GetMinMax":{
+	"scope":"vbs",
+	"prefix":"GetMinMax",
+	"body":[
+		"GetMinMax(${1:Min}, ${2:Max})"
+	],
+	"description":"Retorna nos parâmetros Min e Max os valores mínimo e máximo da escala numérica, respectivamente."
+},"E3-GetRealTimePeriod":{
+	"scope":"vbs",
+	"prefix":"GetRealTimePeriod",
+	"body":[
+		"GetRealTimePeriod(${1:Period})",
+		" $LINE_COMMENT Os valores para de retorno no parâmetro Period são:",
+		" $LINE_COMMENT 0 - tuSeconds : Unidade de tempo em segundos",
+		" $LINE_COMMENT 1 - tuMinutes : Unidade de tempo em minutos",
+		" $LINE_COMMENT 2 - tuHours : Unidade de tempo em horas",
+		" $LINE_COMMENT 3 - tuDays : Unidade de tempo em dias",
+		" $LINE_COMMENT 4 - tuWeeks : Unidade de tempo em semanas",
+		" $LINE_COMMENT 5 - tuMonths : Unidade de tempo em meses",
+		" $LINE_COMMENT 6 - tuYears: Unidade de tempo em anos"
+	],
+	"description":"Retorna a unidade de tempo configurada na escala de tempo real."
+},"E3-GetTickSpacing":{
+	"scope":"vbs",
+	"prefix":"GetTickSpacing",
+	"body":[
+		"GetTickSpacing(${1:TickSpacing})"
+	],
+	"description":"Retorna nos parâmetros Min e Max os valores mínimo e máximo da escala numérica, respectivamente."
+},"E3-SetHistoricPeriod":{
+	"scope":"vbs",
+	"prefix":"SetHistoricPeriod",
+	"body":[
+		"SetHistoricPeriod(${1:Begin}, ${2:End})"
+	],
+	"description":"Configura o período de tempo para a escala histórica. O parâmetro Begin determina o período inicial da escala e End determina o período final da escala."
+},"E3-SetMinMax":{
+	"scope":"vbs",
+	"prefix":"SetMinMax",
+	"body":[
+		"SetMinMax(${1:Min}, ${2:Max})"
+	],
+	"description":"Configura os valores mínimo e máximo da escala numérica. O valor mínimo é determinado pelo parâmetro Min e o máximo por Max."
+},"E3-SetRealTimePeriod":{
+	"scope":"vbs",
+	"prefix":"SetRealTimePeriod",
+	"body":[
+		"SetRealTimePeriod(${1:Times}, ${2:TimeUnit})",
+		" $LINE_COMMENT Os valores para ser utilizado no parâmetro TimeUnit são:",
+		" $LINE_COMMENT 0 - tuSeconds : Unidade de tempo em segundos",
+		" $LINE_COMMENT 1 - tuMinutes : Unidade de tempo em minutos",
+		" $LINE_COMMENT 2 - tuHours : Unidade de tempo em horas",
+		" $LINE_COMMENT 3 - tuDays : Unidade de tempo em dias",
+		" $LINE_COMMENT 4 - tuWeeks : Unidade de tempo em semanas",
+		" $LINE_COMMENT 5 - tuMonths : Unidade de tempo em meses",
+		" $LINE_COMMENT 6 - tuYears: Unidade de tempo em anos"
+	],
+	"description":"Ajusta o intervalo de tempo definido no parâmetro Times na unidade da escala definida pelo parâmetro TimeUnit."
+},"E3-SetTickSpacing":{
+	"scope":"vbs",
+	"prefix":"SetTickSpacing",
+	"body":[
+		"SetTickSpacing(${1:TickSpacing}, ${2:TimeUnit})"
+	],
+	"description":"Configura o espaçamento entre as divisões da escala (ticks) determinado pelo parâmetro TickSpacing usando a unidade de tempo indicada pelo parâmetro TimeUnit."
+},"E3-AddPen":{
+	"scope":"vbs",
+	"prefix":"AddPen",
+	"body":[
+		"AddPen(\"${1:PenName}\")"
+	],
+	"description":"Este método adiciona uma nova Pena ao E3Chart, retornando a Pena criada."
+},"E3-ChangePenPos":{
+	"scope":"vbs",
+	"prefix":"ChangePenPos",
+	"body":[
+		"ChangePenPos(${1:Source}, ${2:Dest})",
+		" $LINE_COMMENT •Source: Determina o índice da Pena a ser movida, começando em um",
+		" $LINE_COMMENT •Dest: Determina o destino da Pena, começando em um"
+	],
+	"description":"Modifica a ordem de desenho das Penas no E3Chart."
+},"E3-SetCursorPos":{
+	"scope":"vbs",
+	"prefix":"SetCursorPos",
+	"body":[
+		"SetCursorPos(${1:X}, ${2:[Range]})"
+	],
+	"description":"Posiciona o cursor de cada Pena do E3Chart. Equivale a utilizar o método SetCursorPos de cada uma das Penas desta Coleção."
+},"E3-Connect":{
+	"scope":"vbs",
+	"prefix":"Connect",
+	"body":[
+		"Connect()"
+	],
+	"description":"Este método conecta a Pena ao servidor para receber os dados de tempo real, associando as propriedades XLink e YLink."
+},"E3-AddPoint":{
+	"scope":"vbs",
+	"prefix":"AddPoint",
+	"body":[
+		"AddPoint(${1:ValueX}, ${2:ValueY}, ${3:[Quality]})"
+	],
+	"description":"Adiciona um ponto ao final do buffer de tempo real. O tamanho do buffer só é válido após a conexão da Pena. "
+},"E3-Disconnect":{
+	"scope":"vbs",
+	"prefix":"Disconnect",
+	"body":[
+		"Disconnect()"
+	],
+	"description":"Este método limpa os dados atuais e permite que a Pena não receba mais os dados de tempo real do seu Tag associado. Se a Pena já está desconectada, este método permanece inativo. "
+},"E3-GetCursorPos":{
+	"scope":"vbs",
+	"prefix":"GetCursorPos",
+	"body":[
+		"GetCursorPos(${1:X}, ${2:Y})"
+	],
+	"description":"Retorna a posição em que o cursor interceptou a Pena no E3Chart. Este método possui os parâmetros X e Y, que correspondem às coordenadas x e y do cursor. "
+},"E3-GetPoint":{
+	"scope":"vbs",
+	"prefix":"GetPoint",
+	"body":[
+		"GetPoint(${1:ValueX}, ${2:ValueY})"
+	],
+	"description":"Retorna as coordenadas X e Y do ponto mais próximo ao valor de entrada em ValueX. O parâmetro ValueX informa o valor de referência para a busca do ponto, e depois recebe o valor efetivo da coordenada X do ponto mais próximo encontrado."
+},"E3-ChangeColumnPos":{
+	"scope":"vbs",
+	"prefix":"ChangeColumnPos",
+	"body":[
+		"ChangeColumnPos(${1:Source}, ${2:Dest})",
+		" $LINE_COMMENT •Source: Índice da coluna a ser movida para Dest",
+		" $LINE_COMMENT •Dest: Índice da coluna a ser movida para Source"
+	],
+	"description":"Troca a posição entre duas colunas."
+},"E3-InsertColumn":{
+	"scope":"vbs",
+	"prefix":"InsertColumn",
+	"body":[
+		"InsertColumn(\"${1:Col}\", ${2:Index})",
+		" $LINE_COMMENT •Col: Identifica a coluna a ser inserida. Para mais informações, consulte a tabela Opções disponíveis para identificação das colunas, no início do tópico Métodos da Legenda",
+		" $LINE_COMMENT •Index: Determina a posição em que a coluna vai ser inserida"
+	],
+	"description":"Insere uma nova coluna na Legenda."
+},"E3-RemoveColumn":{
+	"scope":"vbs",
+	"prefix":"RemoveColumn",
+	"body":[
+		"RemoveColumn(\"${1:Col}\")"
+	],
+	"description":"Remove uma coluna. Este método possui o parâmetro Col, que determina a coluna a ser removida."
+},
+//////////////////////////////////////// METODOS PARA E3PLAYBACK
+"E3-Pause":{
+	"scope":"vbs",
+	"prefix":"Pause",
+	"body":[
+		"Pause()"
+	],
+	"description":"Congela o relógio de playback no tempo atual."
+},"E3-Play":{
+	"scope":"vbs",
+	"prefix":"Play",
+	"body":[
+		"Play()"
+	],
+	"description":"Inicia a reprodução dos dados no horário atual de playback, avançando o relógio de acordo com a velocidade de reprodução atual."
+},"E3-Stop":{
+	"scope":"vbs",
+	"prefix":"Stop",
+	"body":[
+		"Stop()"
+	],
+	"description":"Interrompe o playback, dados de Tags e alarmes são removidos das Telas e nenhuma nova consulta é realizada ao Banco de Dados."
+},
+//////////////////////////////////////// METODOS PARA RELATORIO
+"E3-Export":{
+	"scope":"vbs",
+	"prefix":"Export",
+	"body":[
+		"Export(\"${1:[ExportFilter]}\", \"${2:[ExportFileName]}\")",
+		" $LINE_COMMENT Os valores para ser utilizado no parâmetro ExportFilter são:",
+		" $LINE_COMMENT •PDF: Exporta os dados para o formato PDF (Portable Document Format)",
+		" $LINE_COMMENT •Excel: Exporta os dados para o formato de uma planilha do Excel",
+		" $LINE_COMMENT •HTML: Exporta os dados para o formato HTML (Hyper Text Markup Language)",
+		" $LINE_COMMENT •TEXT: Exporta os dados para o formato Texto",
+		" $LINE_COMMENT •RTF: Exporta os dados para o formato RTF (Rich Text Format)",
+		" $LINE_COMMENT •TIFF: Exporta os dados para o formato TIFF (Tag Image File Format)"
+	],
+	"description":"Exporta um Relatório para o arquivo especificado no parâmetro ExportFileName de acordo com o filtro especificado no parâmetro ExportFilter."
+},
+"E3-GetExportFilter":{
+	"scope":"vbs",
+	"prefix":"GetExportFilter",
+	"body":[
+		"GetExportFilter(\"${1:FilterName}\")",
+		" $LINE_COMMENT Os valores para ser utilizado no parâmetro filtro são(PROPRIEDADE/ FILTRO/ DESCRIÇÃO):",
+		" $LINE_COMMENT AutoRowHeight - Excel - Em Verdadeiro (padrão), configura a altura da linha automaticamente. Em Falso, configura a altura para o maior elemento na linha",
+		" $LINE_COMMENT BorderSpace - Excel - Espaçamento mínimo entre as células. O valor padrão é de 59 twips",
+		" $LINE_COMMENT CreateCSSFile - HTML - Em Verdadeiro, gera um arquivo CSS no diretório indicado por HTMLOutputPath",
+		" $LINE_COMMENT DoubleBoundaries - Excel - Em Verdadeiro, indica que os elementos alinhados à direita devem repor os alinhados à esquerda na mesma coluna. Caso contrário, deixe em Falso para liberar mais espaço",
+		" $LINE_COMMENT ExportRange - HTML - Indica uma faixa de páginas para serem exportadas, como por exemplo 1, 2, 3-9, 14",
+		" $LINE_COMMENT FaxExport - TIFF - Objeto que permite exportar os dados no formato RFC 1314 TIFF",
+		" $LINE_COMMENT FileName - Todos - Informa o nome do arquivo para o qual os dados são exportados",
+		" $LINE_COMMENT GenPageBreaks - HTML - Em Verdadeiro, posiciona quebras de página abaixo do elemento mais inferior em cada página do Relatório",
+		" $LINE_COMMENT HTMLOutputPath - HTML - Caminho padrão para os arquivos HTML",
+		" $LINE_COMMENT JPGQuality - PDF - Indica o nível de qualidade das imagens exportadas, entre 0 (zero) e 100",
+		" $LINE_COMMENT MinColumnWidth - Excel - Tamanho mínimo da coluna. O valor padrão é 1011 twips",
+		" $LINE_COMMENT MinRowHeight - Excel - Tamanho mínimo da linha",
+		" $LINE_COMMENT MultiSheet - Excel - Em Verdadeiro, cada página no Relatório vai para uma planilha separada",
+		" $LINE_COMMENT PageDelimiter - TEXT - Configura ou retorna o caractere delimitador entre páginas",
+		" $LINE_COMMENT SuppressEmptyLines - TEXT - Retira ou insere linhas vazias, para efeito de layout",
+		" $LINE_COMMENT TextDelimiter - HTML - Configura ou retorna o caractere delimitador entre os textos",
+		" $LINE_COMMENT TrimEmptySpace - Excel - Em Verdadeiro, o espaço vertical entre os elementos é eliminado. O padrão é Falso",
+		" $LINE_COMMENT Unicode - TEXT - Determina se o texto é salvo em formato Unicode (16 bits) ou não",
+		" $LINE_COMMENT WebCacheOutput - HTML - Em Verdadeiro, o Relatório é exportado para o serviço de WebCache. Caso contrário (padrão), não é exportado"
+	],
+	"description":"Exporta um Relatório para o arquivo especificado no parâmetro ExportFileName de acordo com o filtro especificado no parâmetro ExportFilter."
+},"E3-Print":{
+	"scope":"vbs",
+	"prefix":"Print",
+	"body":[
+		"Print()"
+	],
+	"description":"Imprime um Relatório."
+},"E3-PrintPreview":{
+	"scope":"vbs",
+	"prefix":"PrintPreview",
+	"body":[
+		"PrintPreview(${1:[Left]}, ${2:[Top]}, ${3:[Width]}, ${4:[Height]})"
+	],
+	"description":"Gera uma prévia de impressão de Relatório na tela. Se o Relatório é mostrado corretamente na tela, retorna Verdadeiro."
+},"E3-Query":{
+	"scope":"vbs",
+	"prefix":"Query",
+	"body":[
+		"Query()"
+	],
+	"description":"Retorna o objeto Consulta atualmente selecionado no Relatório. Para mais informações a respeito deste objeto, consulte o capítulo Consultas."
+},
+//////////////////////////////////////// METODOS PARA RELATORIO DE SECCAO
+"E3-GetScreenValue":{
+	"scope":"vbs",
+	"prefix":"GetScreenValue",
+	"body":[
+		"GetScreenValue(\"${1:Path}\", \"${2:[Frame]}\", \"${3:[Property]}\")"
+	],
+	"description":"Este método funciona apenas em tempo de execução no Elipse E3 Viewer e retorna o valor de uma propriedade de uma Tela ou Quadro."
+},"E3-GetServerValue":{
+	"scope":"vbs",
+	"prefix":"GetServerValue",
+	"body":[
+		"GetServerValue(\"${1:Path}\", \"${2:[Property]}\")"
+	],
+	"description":"Este método funciona tanto no Elipse E3 Studio quanto em tempo de execução e retorna o valor de uma propriedade de um objeto no servidor."
+},"E3-GetViewerValue":{
+	"scope":"vbs",
+	"prefix":"GetViewerValue",
+	"body":[
+		"GetViewerValue(\"${1:Path}\", \"${2:[Property]}\")"
+	],
+	"description":"Este método funciona apenas em tempo de execução no Elipse E3 Viewer e retorna o valor de uma propriedade do objeto Viewer ou de um objeto filho do objeto Viewer."
+},
+//////////////////////////////////////// METODOS PARA TRENDANALYSIS
+"E3-AddDisplay":{
+	"scope":"vbs",
+	"prefix":"AddDisplay",
+	"body":[
+		"AddDisplay(\"${1:[Title]}\", ${2:[DisplayPosition]})"
+	],
+	"description":"Adiciona uma Exibição nova no TrendAnalysis. O parâmetro opcional Title indica o título da Exibição."
+},"E3-AddPlotArea":{
+	"scope":"vbs",
+	"prefix":"AddPlotArea",
+	"body":[
+		"AddPlotArea()"
+	],
+	"description":"Adiciona uma área de plotagem na Exibição selecionada, caso o TrendAnalysis esteja aberto, ou na última Exibição, caso o TrendAnalysis esteja fechado."
+},"E3-CenterWindow":{
+	"scope":"vbs",
+	"prefix":"CenterWindow",
+	"body":[
+		"CenterWindow()"
+	],
+	"description":"Centraliza a janela do TrendAnalysis. Se a janela já está aberta, é centralizada imediatamente. Consulte o método SetWindowPlacement para mais informações sobre o posicionamento de janelas TrendAnalysis."
+},"E3-Load":{
+	"scope":"vbs",
+	"prefix":"Load",
+	"body":[
+		"Load(${1:Configuration}, ${2:[ConfigStatus]}, ${3:[ErrorDetails]})"
+	],
+	"description":"Carrega uma configuração salva pelo método Save no parâmetro Configuration."
+},"E3-SetWindowPlacement":{
+	"scope":"vbs",
+	"prefix":"SetWindowPlacement",
+	"body":[
+		"SetWindowPlacement(${1:[PosX]}, ${2:[PosY]}, ${3:[SizeX]}, ${4:[SizeY]})"
+	],
+	"description":"Informa a posição e o tamanho da janela do TrendAnalysis."
+},
+//////////////////////////////////////// METODOS PARA E3Globals
+"E3-Choose":{
+	"scope":"vbs",
+	"prefix":"Choose",
+	"body":[
+		"Choose(${1:Index}, ${2:Values})"
+	],
+	"description":"Retorna um dos itens especificados em Values, baseado no parâmetro Index, iniciando em 0 (zero). Este método retorna Null caso o valor de Index seja menor que 0 (zero) ou maior ou igual ao número de valores em Values."
+},"E3-GetBit":{
+	"scope":"vbs",
+	"prefix":"GetBit",
+	"body":[
+		"GetBit(${1:Value}, ${2:BitIndex})"
+	],
+	"description":"Retorna o valor (verdadeiro ou falso) do bit de Value especificado em BitIndex. Este método retorna um erro caso o parâmetro BitIndex esteja fora da faixa permitida (entre zero e 31)."
+},"E3-E3ProductString":{
+	"scope":"vbs",
+	"prefix":"E3ProductString",
+	"body":[
+		"E3ProductString()"
+	],
+	"description":"Este método retorna uma String contendo o nome e a versão do componente onde é invocado, como por exemplo Elipse Power 6.6.292 ou Elipse Power (64-bits) 6.6.292"
+},"E3-E3ProductVersionBuild":{
+	"scope":"vbs",
+	"prefix":"E3ProductVersionBuild",
+	"body":[
+		"E3ProductVersionBuild()"
+	],
+	"description":"Este método retorna o número de build da versão do componente onde é invocado. Por exemplo, se a versão do componente é a 6.6.292, este método retorna o valor 292."
+},"E3-E3ProductVersionMajor":{
+	"scope":"vbs",
+	"prefix":"E3ProductVersionMajor",
+	"body":[
+		"E3ProductVersionMajor()"
+	],
+	"description":"Este método retorna o número principal da versão do componente onde é invocado. Por exemplo, se a versão do componente é a 6.6.292, este método retorna o valor 6."
+},"E3-E3ProductVersionMinor":{
+	"scope":"vbs",
+	"prefix":"E3ProductVersionMinor",
+	"body":[
+		"E3ProductVersionMinor()"
+	],
+	"description":"Este método retorna o número secundário da versão do componente onde é invocado. Por exemplo, se a versão do componente é a 6.6.292, este método retorna o valor 6."
+},"E3-GetComputerName":{
+	"scope":"vbs",
+	"prefix":"GetComputerName",
+	"body":[
+		"GetComputerName()"
+	],
+	"description":"Retorna uma String contendo o nome do computador atual. Este método está disponível tanto em Associações quanto em scripts."
+},"E3-GetCurrentWindowsUserName":{
+	"scope":"vbs",
+	"prefix":"GetCurrentWindowsUserName",
+	"body":[
+		"GetCurrentWindowsUserName()"
+	],
+	"description":"Retorna uma String contendo o nome do usuário logado no processo corrente. Este método não está disponível em Associações, somente em scripts."
+},"E3-GetLocalTime":{
+	"scope":"vbs",
+	"prefix":"GetLocalTime",
+	"body":[
+		"GetLocalTime()"
+	],
+	"description":"Retorna a data e hora do computador local, com precisão de milissegundos e no fuso horário local. Este método não está disponível em Associações, somente em scripts."
+},"E3-GetLocalTimeUTC":{
+	"scope":"vbs",
+	"prefix":"GetLocalTimeUTC",
+	"body":[
+		"GetLocalTimeUTC()"
+	],
+	"description":"Retorna a data e hora do computador local, com precisão de milissegundos e no fuso horário UTC (Tempo Universal Coordenado). Este método não está disponível em Associações, somente em scripts."
+},"E3-IIf":{
+	"scope":"vbs",
+	"prefix":"IIf",
+	"body":[
+		"IIf(${1:Condition}, ${2:ExprTrue}, ${3:ExprFalse})"
+	],
+	"description":"Retorna a expressão contida em ExprTrue se a condição avaliada em Condition é verdadeira, e a expressão contida em ExprFalse se a condição avaliada é falsa. Este método está disponível tanto em Associações quanto em scripts."
+},"E3-SetBit":{
+	"scope":"vbs",
+	"prefix":"SetBit",
+	"body":[
+		"SetBit(${1:Value}, ${2:BitIndex}, ${3:BitValue})"
+	],
+	"description":"Ajusta o valor de Value (verdadeiro ou falso) do bit especificado em BitIndex para BitValue."
+},"E3-SourceTypeName":{
+	"scope":"vbs",
+	"prefix":"SourceTypeName",
+	"body":[
+		"SourceTypeName(${1:SourceType})",
+		" $LINE_COMMENT ·-1: String vazia",
+		" $LINE_COMMENT ·0: Fonte Ativa",
+		" $LINE_COMMENT ·1: SCADA",
+		" $LINE_COMMENT ·2: Operador",
+		" $LINE_COMMENT ·3: Centro de Comando",
+		" $LINE_COMMENT ·4: Faturamento",
+		" $LINE_COMMENT ·5: Calculada",
+		" $LINE_COMMENT ·6: Banco de Dados",
+		" $LINE_COMMENT ·100: Processador Topológico",
+		" $LINE_COMMENT ·101: Fluxo de Potência",
+		" $LINE_COMMENT ·102: Estimador de Estados",
+		" $LINE_COMMENT ·103: Descarte de Cargas",
+		" $LINE_COMMENT ·104: Modelagem de Cargas para Distribuição",
+		" $LINE_COMMENT ·105: Autorrecuperação",
+		" $LINE_COMMENT ·106: Leitor Externo"
+
+	],
+	"description":"Retorna uma String com a descrição da Fonte de Medida ativa, ou seja, a propriedade ActiveSource dos objetos Medida Analógica e Medida Discreta do Elipse Power."
+},"E3-XQuery":{
+	"scope":"vbs",
+	"prefix":"XQuery",
+	"body":[
+		"XQuery(${1:ContextObject}, ${2:[strQuery]}, ${3:pVarOutError})"
+	],
+	"description":"Este método retorna o resultado de uma Consulta Hierarquia do Aplicativo como uma String no formato XML. O parâmetro ContextObject corresponde ao objeto de início desta Consulta. "
+}
+}
+
