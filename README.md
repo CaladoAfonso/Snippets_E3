@@ -1,4 +1,4 @@
-# Snippets_E3_Power
+# Snippets_E3
 Snippets para VSCode personalizado para métodos e propriedades comuns e métodos específicos utilizados no software Elipse E3
 
 # Passo a Passo para utilização do Snippets
